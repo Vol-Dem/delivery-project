@@ -1,0 +1,49 @@
+@use "../../../variables/variables.scss" as var;
+@use "../../../variables/mixins.scss" as mix;
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.advantages-section {
+  position: relative;
+  background: url(../../../assets/bg-elements/bg-dotted.svg) 0 -75px,
+    linear-gradient(to top, #c2005e, #0037ba);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../assets//bg-elements/bg-circles.svg);
+    opacity: 0.2;
+    z-index: -1;
+  }
+}
+
+.advantages__head {
+  &__titles {
+    color: #fff;
+    & h5 {
+      color: #fff;
+    }
+    // text-align: right;
+  }
+
+  &--button {
+  }
+}
+.advantages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
+  padding: 3rem 0;
+  margin-top: 2rem;
+}
+
+.container {
+  //   margin: 0 5rem;
+}

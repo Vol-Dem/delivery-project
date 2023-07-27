@@ -1,0 +1,27 @@
+@use "../../../variables/variables.scss" as var;
+@use "../../../variables/mixins.scss" as mix;
+
+.services-section {
+  padding-bottom: 10rem;
+  margin-top: -8rem;
+  position: relative;
+  @include mix.bg-gradient-circles;
+}
+
+.services__head {
+  &__titles {
+  }
+
+  &--button {
+  }
+}
+.services {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
+  padding: 3rem 0;
+  margin-top: 2rem;
+}
+
+.container {
+}

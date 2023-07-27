@@ -1,0 +1,39 @@
+@use "../../../variables/variables.scss" as var;
+
+.header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var.$color-text-white;
+  width: 100%;
+  padding: 2rem;
+  z-index: 2222;
+  transition: background-color 0.4s;
+
+  &--sticky {
+    position: fixed;
+    padding: 1rem 2rem;
+
+    // margin: 0;
+    background-color: rgba(var.$color-primary, 0.9);
+    // position: sticky;
+    // top: 0px;
+    // z-index: 1;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  &__img {
+    width: 4rem;
+    // fill: #fff;
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 0.2rem;
+  }
+}

@@ -1,0 +1,22 @@
+@use "../variables/variables.scss" as var;
+
+.titles {
+  &__main {
+    font-size: 3.2rem;
+  }
+
+  &__sub {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &-img {
+      width: 2rem;
+      height: 2rem;
+    }
+    &-text {
+      color: var.$color-primary;
+      font-size: 2rem;
+    }
+  }
+}

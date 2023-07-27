@@ -1,0 +1,68 @@
+@use "../../../variables/variables.scss" as var;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.contacts-section {
+  position: relative;
+  font-size: 1.6rem;
+  padding-bottom: 8rem;
+  // background-color: var.$color-background-gray;
+  // background: url(../../../assets//bg-elements/map.svg);
+  // background-size: cover;
+  // background-position: center;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url(../../../assets//bg-elements/map.svg);
+    background-position: center;
+    background-size: cover;
+    opacity: 0.1;
+    filter: grayscale(1);
+  }
+}
+
+.contacts-img {
+  width: 90rem;
+  filter: var.$drop-shadow;
+}
+
+.contacts-content {
+  &__text {
+    margin-top: 3rem;
+  }
+  &__list {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    margin-left: 4rem;
+    columns: 2;
+  }
+
+  &__phone {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 3.2rem;
+    margin-top: 4rem;
+  }
+
+  &__phone-img {
+    width: 6rem;
+    // border: 2px solid #000;
+    // background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    padding: 0.7rem;
+    box-shadow: 0 0px 2rem 0.5rem rgba(30, 17, 127, 0.2);
+    fill: var.$color-primary;
+  }
+
+  &__btn {
+    margin-top: 5rem;
+  }
+}

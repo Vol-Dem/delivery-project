@@ -1,0 +1,28 @@
+@use "../../../variables/variables.scss" as var;
+
+.nav-main {
+  font-size: 1.6rem;
+  font-weight: 400;
+  & ul {
+    display: flex;
+    gap: 0.8rem;
+    list-style: none;
+  }
+}
+
+.nav__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-block;
+  color: var.$color-text-white;
+  text-decoration: none;
+  transition: all 0.2s;
+
+  &:hover {
+    text-shadow: 0 0 1rem #fff;
+  }
+}

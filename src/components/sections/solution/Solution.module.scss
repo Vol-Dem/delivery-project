@@ -1,0 +1,85 @@
+@use "../../../variables/variables.scss" as var;
+
+.solution-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.triangle {
+  position: absolute;
+  opacity: 0.1;
+  width: 18rem;
+  bottom: 3rem;
+  left: 2rem;
+  fill: var.$color-violet-dark;
+  animation: fly 5.5s infinite ease-in;
+  z-index: -1;
+}
+
+.square {
+  position: absolute;
+  opacity: 0.2;
+  width: 18rem;
+  top: -6rem;
+  left: 30%;
+  fill: var.$color-violet-dark;
+  animation: fly 5.5s infinite ease-in;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+
+  font-size: 1.6rem;
+  gap: 4.6rem;
+}
+
+.solution {
+  & p:nth-child(3) {
+    padding-left: 1rem;
+    border-left: 3px solid var.$color-primary;
+  }
+}
+
+.solution__title {
+}
+
+.solution__text {
+  margin-top: 2rem;
+}
+
+.solution-content {
+  &__card {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  &__icon {
+    width: 16rem;
+  }
+
+  &__text {
+  }
+}
+
+.solution-image {
+  &--main {
+    width: 45rem;
+    color: blueviolet;
+    filter: drop-shadow(2px 3px 5px rgba(22, 0, 0, 0.1));
+  }
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(0.5rem);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}

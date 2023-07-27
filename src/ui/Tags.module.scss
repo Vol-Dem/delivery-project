@@ -1,0 +1,19 @@
+.tags {
+  display: flex;
+  gap: 1rem;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  color: #373f61;
+  margin-top: 0.5rem;
+
+  &__item {
+    border-bottom: 1px solid #373f61;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: #76007e;
+      border-color: #76007e;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+@use "../../../variables/variables.scss" as var;
+@use "../../../variables/mixins.scss" as mix;
+
+.steps-section {
+  position: relative;
+  background-color: var.$color-background-gray;
+  &__titles {
+    text-align: center;
+    & div {
+      justify-content: center;
+    }
+  }
+}
+
+.steps {
+  display: flex;
+
+  justify-content: center;
+  gap: 2rem;
+  padding: 12rem 0 8rem;
+  font-size: 1.8rem;
+
+  &__item {
+    position: relative;
+    padding: 3rem;
+    width: 25rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 1rem;
+      background-image: url("./../../../assets/title-box.svg");
+      background-repeat: no-repeat;
+      background-size: 80%;
+      background-position: 105% 80%;
+      opacity: 0.05;
+      filter: grayscale(0.5);
+    }
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: -5rem;
+      left: 50%;
+      border-radius: 1rem;
+      background-image: url("./../../../assets/layout/dashed-line.svg");
+      background-repeat: no-repeat;
+    }
+
+    &--blue {
+      color: #fff;
+      background: linear-gradient(to top, #2196f3, #1d3def);
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 1rem;
+        background-image: url("./../../../assets/title-box.svg");
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: 105% 80%;
+        opacity: 0.1;
+        filter: brightness(12.6);
+      }
+    }
+  }
+  &__icon {
+    // filter: drop-shadow(4px 6px 4px rgba(22, 0, 0, 0.2));
+
+    &--small {
+      position: absolute;
+      width: 12rem;
+      top: -6rem;
+      left: 50%;
+      transform: translate(-62%);
+      stroke: #fff;
+      z-index: 222;
+      filter: drop-shadow(4px 6px 4px rgba(22, 0, 0, 0.2));
+    }
+    &--big {
+      position: absolute;
+      width: 14rem;
+      top: -6rem;
+      left: 50%;
+      transform: translate(-47%);
+      stroke: #fff;
+      z-index: 222;
+      filter: drop-shadow(4px 6px 4px rgba(22, 0, 0, 0.2));
+    }
+    &--dark {
+      fill: #1c53de;
+    }
+    &--light {
+      fill: #00c3ef;
+    }
+  }
+  &__title {
+    position: relative;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-top: 6rem;
+  }
+  &__text {
+    position: relative;
+    margin-top: 2rem;
+  }
+}

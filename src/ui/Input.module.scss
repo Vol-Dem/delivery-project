@@ -1,0 +1,28 @@
+@use "../variables/variables.scss" as var;
+
+.input {
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 1.3rem;
+  border: 1px solid var.$color-text-gray;
+  border-radius: 1rem;
+  color: var.$color-text-primary;
+  &--select {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: 1px solid blueviolet;
+  }
+  &-img {
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    stroke: blueviolet;
+    &--box {
+      fill: rgba(137, 43, 226, 0.5);
+      stroke-width: 0.1px;
+    }
+  }
+}

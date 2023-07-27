@@ -1,0 +1,94 @@
+@use "../../../variables/variables.scss" as var;
+@use "../../../variables/mixins.scss" as mix;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-section {
+  position: relative;
+  padding: 2rem 0rem;
+  @include mix.bg-gradient-circles;
+  &__img {
+    width: 45%;
+    filter: var.$drop-shadow;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    padding: 3rem;
+  }
+  &__titles {
+    margin-top: 3rem;
+  }
+  &__text {
+    font-size: 1.6rem;
+    margin-top: 2rem;
+
+    & p {
+      margin-bottom: 2rem;
+
+      &:nth-child(1) {
+        padding-left: 1rem;
+        border-left: 3px solid var.$color-primary;
+      }
+    }
+  }
+  &__info {
+    display: flex;
+
+    margin: 4rem 0 3rem 0;
+
+    &-bg {
+      padding: 0.2rem;
+      border-radius: 0.8rem;
+      background: linear-gradient(
+        140deg,
+        transparent 0%,
+        transparent 50%,
+        blueviolet 50%
+      );
+      background-size: 250%;
+      margin-right: 2rem;
+      transition: all 0.4s;
+
+      &:hover {
+        background-position: 100%;
+      }
+    }
+    &-block {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 1rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      width: 20rem;
+      height: 8rem;
+      border-radius: 0.8rem;
+      color: var.$color-text-white;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+
+      &--1 {
+        background-color: var.$color-violet;
+      }
+      &--2 {
+        background-color: var.$color-green;
+      }
+
+      &:hover {
+        // background-color: blueviolet;
+        // transform: translateY(-0.2rem);
+      }
+    }
+
+    &-img {
+      fill: var.$color-white;
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+}

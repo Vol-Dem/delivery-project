@@ -1,0 +1,23 @@
+@use "./variables/variables.scss" as var;
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+.cls-1 {
+  fill: var.$color-primary;
+}
+
+body {
+  font-size: 1.6rem;
+  color: var.$color-text-primary;
+  font-family: var.$font-family-primary;
+  line-height: 1.4;
+}

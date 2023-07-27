@@ -1,0 +1,101 @@
+.city-img {
+  position: absolute;
+  width: 120rem;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+  z-index: 5;
+  margin: 0 auto;
+  animation: speed 8s infinite linear;
+}
+
+.bg-grad {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.9;
+  left: 0;
+  z-index: 4;
+
+  &--night {
+    background-image: linear-gradient(
+      0deg,
+      hsl(240deg 100% 20%) 1%,
+      hsl(308deg 100% 24%) 40%,
+      hsl(331deg 100% 38%) 48%,
+      hsl(355deg 89% 58%) 51%,
+      hsl(26deg 100% 56%) 51%,
+      hsl(47deg 100% 50%) 50%,
+      hsl(48deg 100% 50%) 50%,
+      hsl(32deg 100% 50%) 49%,
+      hsl(344deg 100% 50%) 49%,
+      hsl(329deg 100% 50%) 52%,
+      hsl(308deg 100% 44%) 60%,
+      hsl(244deg 100% 50%) 99%
+    );
+    animation: dayNightCycle 16s ease-in-out infinite;
+  }
+
+  &--day {
+    background-image: linear-gradient(
+      0deg,
+      hsl(240deg 78.33% 48.65%) 1%,
+      #2196f3 40%,
+      #00d4ef 51%,
+      #00e2ff 50%,
+      hsl(230.85deg 87.02% 52.63%) 99%
+    );
+    animation: dayNightCycle 16s ease-in-out infinite 8s;
+  }
+}
+
+.cloud-img {
+  position: absolute;
+  fill: rgba(67, 67, 67, 0.5);
+  opacity: 0.2;
+  width: 12rem;
+  z-index: 4;
+
+  &--1 {
+    top: 12%;
+    left: 10%;
+    animation: fly 7.5s ease-in-out infinite;
+  }
+  &--2 {
+    top: 14%;
+    right: 10%;
+    animation: fly 6.5s ease-in-out infinite 0.3s;
+  }
+
+  &--3 {
+    top: 17%;
+    right: 40%;
+    animation: fly 6.5s ease-in-out infinite 1.3s;
+  }
+}
+
+@keyframes fly {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(40%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes dayNightCycle {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
