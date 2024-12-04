@@ -18,8 +18,13 @@ import { ReactComponent as CorrespondenceImg } from "./../../../assets/slider/co
 import Titles from "../../../ui/Titles";
 import Slider from "../../slider/Slider";
 import Wrap from "../../layout/Wrap";
+import { useRef } from "react";
+import useIntersection from "../../hooks/use-intersection";
+import { motion } from "framer-motion";
 
 const Solution = () => {
+  const sectionRef = useRef();
+  const isIntersecting = useIntersection(sectionRef);
   const sliderData = [
     {
       img: DocumentsImg,
@@ -89,10 +94,18 @@ const Solution = () => {
   ];
 
   return (
-    <section className={classes["solution-section"]} id="section-solution">
+    <section
+      ref={sectionRef}
+      className={classes["solution-section"]}
+      id="section-solution"
+    >
       <Wrap>
         <div className={classes["container"]}>
-          <div className={classes["solution"]}>
+          <div
+            className={`${classes["solution"]} ${
+              isIntersecting ? classes["solution--animate"] : ""
+            }`}
+          >
             <Titles
               main="What do we deliver"
               sub="Solution"
@@ -117,14 +130,39 @@ const Solution = () => {
               take care of the timely delivery of goods.
             </p>
           </div>
-          <div className={classes["solution__image"]}>
-            <DeliveryMarkersImg className={classes["solution-image--main"]} />
-          </div>
+
+          <DeliveryMarkersImg
+            className={`${classes["solution-image"]} ${
+              isIntersecting ? classes["solution-image--animate"] : ""
+            }`}
+          />
         </div>
-        <Slider sliderData={sliderData} />
+        <Slider
+          sliderData={sliderData}
+          className={`${classes["slider"]} ${
+            isIntersecting ? classes["slider--animate"] : ""
+          }`}
+        />
       </Wrap>
       <TriangleImg className={classes.triangle} />
-      <SquareImg className={classes.square} />
+      {/* <div>
+        <SquareImg className={classes.square} />
+      </div> */}
+      <motion.div
+        className={classes["square-container"]}
+        // whileInView={{
+        //   // rotate: 360,
+        //   y: [0, 56, 0],
+        //   transition: {
+        //     repeat: Infinity,
+        //     duration: 16,
+        //     type: "tween",
+        //     ease: "linear",
+        //   },
+        // }}
+      >
+        <SquareImg className={classes.square} />
+      </motion.div>
     </section>
   );
 };

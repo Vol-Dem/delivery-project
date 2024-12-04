@@ -1,3 +1,5 @@
+@use "./../../variables/variables.scss" as var;
+
 .auth {
   padding: 1rem 2rem;
   &__title {
@@ -27,4 +29,14 @@
     filter: grayscale(0.5);
     z-index: -1;
   }
+}
+
+.invalid {
+  // background-color: lighten(var.$color-red, 60%);
+  border-color: var.$color-red;
+}
+
+.success {
+  font-size: 1.8rem;
+  font-weight: 500;
 }

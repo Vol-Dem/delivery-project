@@ -1,5 +1,11 @@
 .bg {
   position: relative;
-  overflow: hidden;
+  /* overflow-x: clip; */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 92%);
+}
+
+@media (max-width: 1000px) {
+  .bg {
+    clip-path: none;
+  }
 }

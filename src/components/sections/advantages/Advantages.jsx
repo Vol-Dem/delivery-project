@@ -2,8 +2,12 @@ import classes from "./Advantages.module.scss";
 import AdvantagesCard from "./advantages-card/AdvantagesCard";
 import Titles from "../../../ui/Titles";
 import Wrap from "../../layout/Wrap";
+import { useRef } from "react";
+import useIntersection from "../../hooks/use-intersection";
 
 const Advantages = () => {
+  const sectionRef = useRef();
+  const isIntersecting = useIntersection(sectionRef);
   const advantagesInfo = [
     {
       img: 1,
@@ -27,17 +31,25 @@ const Advantages = () => {
     },
   ];
   return (
-    <section className={classes["advantages-section"]}>
+    <section ref={sectionRef} className={classes["advantages-section"]}>
       <Wrap>
         <div className={classes.container}>
-          <div className={classes["advantages__head"]}>
+          <div
+            className={`${classes["advantages__head"]} ${
+              isIntersecting ? classes["advantages__head--animate"] : ""
+            }`}
+          >
             <Titles
               main="Our advantages"
               sub="It's convenient"
               className={classes["advantages__head__titles"]}
             />
           </div>
-          <div className={classes.advantages}>
+          <div
+            className={`${classes.advantages} ${
+              isIntersecting ? classes["advantages--animate"] : ""
+            }`}
+          >
             {advantagesInfo.map((service, i) => {
               return (
                 <AdvantagesCard
@@ -45,6 +57,11 @@ const Advantages = () => {
                   img={service.img}
                   title={service.title}
                   text={service.text}
+                  className={`${classes["advantages__card"]} ${
+                    isIntersecting
+                      ? classes[`advantages__card--animate-${i + 1}`]
+                      : ""
+                  }`}
                 />
               );
             })}

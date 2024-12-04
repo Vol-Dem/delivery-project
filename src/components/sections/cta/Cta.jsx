@@ -1,19 +1,48 @@
+import { useState, useRef } from "react";
+import useIntersection from "../../hooks/use-intersection";
 import Button from "../../../ui/Button";
-import Titles from "../../../ui/Titles";
 import classes from "./Cta.module.scss";
+import Modal from "../../../ui/Modal";
+import AuthForm from "../../auth/AuthForm";
+import { AnimatePresence } from "framer-motion";
 
 const Cta = () => {
+  const [authIsOpen, setAuthIsOpen] = useState(false);
+  const sectionRef = useRef();
+  const isIntersecting = useIntersection(sectionRef);
+
+  const openAuthForm = () => {
+    setAuthIsOpen(true);
+  };
+  const closeAuthForm = () => {
+    setAuthIsOpen(false);
+  };
   return (
-    <section className={classes["cta-sections"]}>
-      <div className={classes["cta__container"]}>
+    <section ref={sectionRef} className={classes["cta-sections"]}>
+      <div
+        className={`${classes["cta__container"]} ${
+          isIntersecting ? classes["cta__container--animate"] : ""
+        }`}
+      >
         <div>
-          <Titles main="Need to send parcels regularly? Create an account" />
+          <h2 className={classes["cta__title"]}>
+            Need to send parcels regularly? <span>Create an account</span>
+          </h2>
           <p className={classes["cta__text"]}>
             Send goods quickly, easily and conveniently without restrictions
           </p>
         </div>
-        <Button>Sign up!</Button>
+        <Button className={classes["cta__btn"]} onClick={openAuthForm}>
+          Sign up!
+        </Button>
       </div>
+      <AnimatePresence>
+        {authIsOpen && (
+          <Modal onClose={closeAuthForm}>
+            <AuthForm />
+          </Modal>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

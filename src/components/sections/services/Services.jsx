@@ -6,8 +6,12 @@ import globeServiceImg from "../../../assets/globe-service.png";
 import ServiceCard from "./service-card/ServiceCard";
 import Titles from "../../../ui/Titles";
 import Wrap from "../../layout/Wrap";
+import { useRef } from "react";
+import useIntersection from "../../hooks/use-intersection";
 
 const Services = () => {
+  const sectionRef = useRef();
+  const isIntersecting = useIntersection(sectionRef);
   const servicesInfo = [
     {
       img: shopImg,
@@ -31,9 +35,17 @@ const Services = () => {
     },
   ];
   return (
-    <section className={classes["services-section"]} id="section-services">
+    <section
+      ref={sectionRef}
+      className={classes["services-section"]}
+      id="section-services"
+    >
       <Wrap>
-        <div className={classes["services__head"]}>
+        <div
+          className={`${classes["services__head"]} ${
+            isIntersecting ? classes["services__head--animate"] : ""
+          }`}
+        >
           <Titles
             main="Delivery types"
             sub="Our services"
@@ -48,6 +60,11 @@ const Services = () => {
                 image={service.img}
                 title={service.title}
                 text={service.text}
+                className={
+                  isIntersecting
+                    ? classes[`service__card--animate-${i + 1}`]
+                    : ""
+                }
               />
             );
           })}

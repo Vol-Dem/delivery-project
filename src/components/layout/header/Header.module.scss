@@ -14,12 +14,7 @@
   &--sticky {
     position: fixed;
     padding: 1rem 2rem;
-
-    // margin: 0;
     background-color: rgba(var.$color-primary, 0.9);
-    // position: sticky;
-    // top: 0px;
-    // z-index: 1;
   }
 }
 
@@ -27,13 +22,43 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   &__img {
     width: 4rem;
-    // fill: #fff;
+    height: 4rem;
     fill: transparent;
     stroke: #fff;
     stroke-width: 0.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var.$color-text-white;
+    width: 100%;
+    z-index: 2222;
+    transition: background-color 0.4s;
+    position: fixed;
+    padding: 0.1rem 2rem;
+    background-color: rgba(var.$color-primary, 0.9);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    &__img {
+      width: 2.8rem;
+      fill: transparent;
+      stroke: #fff;
+      stroke-width: 0.2rem;
+    }
   }
 }

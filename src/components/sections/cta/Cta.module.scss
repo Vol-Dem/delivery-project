@@ -36,31 +36,74 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5.5rem 7rem 5rem;
+    gap: 3rem;
+    padding: 5.5rem 0rem 5rem;
     max-width: 120rem;
     margin: 0 auto;
+    opacity: 0;
+
+    &--animate {
+      animation: slideInUp 1s ease forwards;
+    }
+  }
+
+  &__title {
+    font-size: 3.2rem;
+    & span {
+      white-space: nowrap;
+    }
   }
 
   &__text {
-    font-size: 2.2rem;
-    max-width: 75rem;
-  }
-  &__counters {
-    margin-top: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 2rem;
-  }
-  &__counter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
     font-size: 2rem;
-    &-digits {
-      font-size: 4.6rem;
-      font-weight: 700;
+    max-width: 75rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .cta {
+    &__container {
+      max-width: 90%;
     }
   }
 }
+
+@media (max-width: 800px) {
+  .cta {
+    &__container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__title {
+      font-size: 3.2rem;
+      text-align: center;
+    }
+
+    &__text {
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    &__btn {
+      width: 30rem;
+    }
+  }
+}
+
+@media (max-width: 485px) {
+  .cta {
+    &__title {
+      font-size: 2.8rem;
+    }
+
+    &__text {
+      font-size: 1.6rem;
+    }
+    &__btn {
+      width: 30rem;
+    }
+  }
+}
+
+@include mix.slideInUp;

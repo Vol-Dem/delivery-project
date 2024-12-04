@@ -3,7 +3,7 @@ import { ReactComponent as BoxEmptyImg } from "./../assets/layout/boxempty.svg";
 import { useRef, useState } from "react";
 import Input from "./Input";
 
-const Select = ({ options, onChange }) => {
+const Select = ({ options, onChange, className }) => {
   const [selectIsOpen, setSelectIsOpen] = useState(false);
   const [boxValue, setBoxValue] = useState("");
   const fieldRef = useRef();
@@ -47,7 +47,7 @@ const Select = ({ options, onChange }) => {
   });
 
   return (
-    <div className={classes["select"]} onClick={onShowSelect}>
+    <div className={`${classes["select"]} ${className}`} onClick={onShowSelect}>
       <span
         className={`${classes["select__arrow"]} ${
           selectIsOpen ? classes["select__arrow--open"] : ""

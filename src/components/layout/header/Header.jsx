@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import classes from "./Header.module.scss";
 import { ReactComponent as LogoImg } from "./../../../assets/logo.svg";
 import MainNavigation from "../navigation/MainNavigation";
+import MobileNavigation from "../navigation/MobileNavigation";
+
+import React from "react";
+
+const stickyNav = () => {
+  return <div>Header</div>;
+};
 
 const Header = () => {
   const [sticky, setSticky] = useState(false);
 
-  const stickyMenu = (entries) => {
+  const stickyMenu = () => {
     const scrollTop = window.scrollY;
     const isSticky = scrollTop > 700;
     setSticky(isSticky);
@@ -27,6 +34,7 @@ const Header = () => {
         <LogoImg className={classes["logo__img"]} /> UNSTO-EXPRESS
       </div>
       <MainNavigation />
+      <MobileNavigation />
     </header>
   );
 };

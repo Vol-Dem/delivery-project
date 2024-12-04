@@ -1,0 +1,13 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+  opacity: 0;
+
+  &-digits {
+    font-size: 4.6rem;
+    font-weight: 700;
+  }
+}

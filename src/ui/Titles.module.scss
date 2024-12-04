@@ -1,6 +1,8 @@
 @use "../variables/variables.scss" as var;
 
 .titles {
+  display: flex;
+  flex-direction: column;
   &__main {
     font-size: 3.2rem;
   }

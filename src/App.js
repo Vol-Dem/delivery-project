@@ -29,7 +29,6 @@ function App() {
           <Services />
           <Counters />
           <Solution />
-          {/* <Slider /> */}
           <Cta />
           <About />
           <Steps />

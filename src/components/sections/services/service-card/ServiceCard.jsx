@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ServiceCard.module.scss";
 
-const ServiceCard = ({ image, title, text }) => {
+const ServiceCard = ({ image, title, text, className }) => {
   const slideEnter = (e) => {
     const size = e.target.getBoundingClientRect();
     const elementWidth = +size.width.toFixed();
@@ -27,7 +27,7 @@ const ServiceCard = ({ image, title, text }) => {
     }
   };
   return (
-    <div className={classes["service__container"]}>
+    <div className={`${classes["service__container"]} ${className || ""}`}>
       <div
         onPointerEnter={slideEnter}
         onPointerLeave={slideLeave}

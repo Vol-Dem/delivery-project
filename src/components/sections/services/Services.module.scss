@@ -9,6 +9,10 @@
 }
 
 .services__head {
+  opacity: 0;
+  &--animate {
+    animation: slideInUp 1s ease forwards;
+  }
   &__titles {
   }
 
@@ -18,10 +22,67 @@
 .services {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   gap: 4rem;
   padding: 3rem 0;
   margin-top: 2rem;
 }
 
+.service__card--animate {
+  &-1 {
+    animation: slideInUp 1s ease forwards;
+  }
+  &-2 {
+    animation: slideInUp 1s ease forwards 0.1s;
+  }
+  &-3 {
+    animation: slideInUp 1s ease forwards 0.2s;
+  }
+  &-4 {
+    animation: slideInUp 1s ease forwards 0.3s;
+  }
+}
+
 .container {
 }
+
+@media (max-width: 1220px) {
+  .services {
+    gap: 2rem;
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    // gap: 4rem;
+    // padding: 3rem 0;
+    // margin-top: 2rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .services-section {
+    margin-top: 0;
+    background: #fff;
+    margin-top: -15rem;
+    z-index: 5;
+  }
+
+  .services {
+    gap: 4rem;
+    // display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    // gap: 4rem;
+    // padding: 3rem 0;
+    // margin-top: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-section {
+    margin-top: 0;
+  }
+  .services {
+    grid-template-columns: 1fr;
+  }
+}
+
+@include mix.slideInUp;

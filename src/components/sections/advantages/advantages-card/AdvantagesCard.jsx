@@ -4,7 +4,7 @@ import { ReactComponent as MastercardImg } from "../../../../assets/mastercard.s
 import { ReactComponent as HeartfulImg } from "../../../../assets/heartful-care.svg";
 import { ReactComponent as LocationImg } from "../../../../assets/location.svg";
 
-const AdvantagesCard = ({ img, title, text }) => {
+const AdvantagesCard = ({ img, title, text, className }) => {
   let image;
   switch (img) {
     case 1:
@@ -26,7 +26,7 @@ const AdvantagesCard = ({ img, title, text }) => {
   }
 
   return (
-    <div className={classes["advantages-card"]}>
+    <div className={`${classes["advantages-card"]} ${className || ""}`}>
       <div
         className={`${classes["advantages-card__side"]} ${classes["advantages-card__side--front"]}`}
       >

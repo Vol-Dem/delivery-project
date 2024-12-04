@@ -1,21 +1,28 @@
 @use "../../../variables/variables.scss" as var;
+@use "../../../variables/mixins.scss" as mix;
+
 .calculator-section {
   position: relative;
   height: 70rem;
   z-index: 222;
 
   &__title {
-    // color: #fff;
+    font-size: 3.2rem;
   }
 }
 
 .calculator-container {
-  min-width: 100rem;
+  // min-width: 100rem;
   background-color: rgba(255, 255, 255, 0.85);
   padding: 4rem;
   margin-top: 2rem;
   border-radius: 1rem;
   box-shadow: 0 0 1rem rgba(32, 32, 32, 0.4);
+  opacity: 0;
+
+  &--animate {
+    animation: slideInUp 1s forwards;
+  }
 }
 
 .calculator {
@@ -52,19 +59,23 @@
     }
   }
 
-  &__delivery-type {
+  &__options {
     display: flex;
     gap: 2rem;
     margin-top: 2rem;
     border: none;
 
-    & label {
+    &-label {
       cursor: pointer;
       font-size: 1.4rem;
       padding: 1.5rem;
       border: 2px solid var.$color-gray;
       border-radius: 1rem;
-      transition: all 0.2s;
+      transition: all 0.3s;
+
+      &:hover {
+        border: 2px solid lighten(var.$color-primary, 20%);
+      }
     }
 
     & input {
@@ -85,76 +96,74 @@
   }
 
   &__select {
-    position: relative;
     align-self: start;
-    cursor: pointer;
-
-    &-arrow {
-      display: block;
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 2rem;
-      height: 2rem;
-      background-color: var.$color-text-gray;
-      clip-path: polygon(0 25%, 50% 60%, 100% 25%, 100% 40%, 50% 80%, 0 40%);
-      transition: all 0.3s;
-
-      &--open {
-        transform-origin: 50% 30%;
-        transform: rotate(180deg);
-      }
-    }
-    &__item {
-      //   display: flex;
-      //   align-items: center;
-    }
-
-    &-label {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      border-radius: 1rem;
-      padding: 1rem;
-      transition: all 0.2s;
-
-      &:hover {
-        background-color: var.$color-violet-light !important;
-      }
-    }
-
-    &-box {
-      position: absolute;
-      background-color: var.$color-white;
-      width: 94%;
-      height: 25rem;
-      margin-left: 3%;
-      padding: 1rem;
-      overflow: hidden;
-      border: 1px solid var.$color-violet-dark;
-      border-radius: 0 0 1rem 1rem;
-      transition: all 0.3s;
-      &--hide {
-        background-color: transparent;
-        border-color: transparent;
-        padding: 0;
-        height: 0;
-      }
-    }
-
-    &-icon {
-      width: 6rem;
-    }
-    &-desc {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      font-size: 1.2rem;
-    }
   }
 
   &__btn {
     margin-top: 1.5rem;
   }
+
+  &__form-title {
+    font-size: 2.8rem;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  &__successful {
+    font-size: 2.4rem;
+    text-align: center;
+    font-weight: 600;
+
+    & span {
+      display: block;
+    }
+  }
 }
+
+@media (max-width: 1000px) {
+  .calculator__options {
+    &-label {
+      padding: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .calculator {
+    grid-template-columns: repeat(2, 1fr);
+    &__select {
+      align-self: flex-end;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .calculator {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    // &__select {
+    //   align-self: flex-end;
+    // }
+  }
+  .calculator-wrap {
+    padding-top: 3rem !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .calculator-section {
+    &__title {
+      font-size: 2.4rem;
+    }
+  }
+  .calculator-container {
+    padding: 4rem 3rem;
+  }
+}
+
+@include mix.slideInUp;

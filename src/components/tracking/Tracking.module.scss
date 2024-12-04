@@ -1,0 +1,61 @@
+@use "../../variables/variables.scss" as var;
+
+.tracking {
+  display: flex;
+
+  flex-direction: column;
+  gap: 2rem;
+  &__title {
+    font-size: 3.2rem;
+    font-weight: 600;
+  }
+
+  &__number-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__number {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: center;
+    gap: 0.1rem 1.4rem;
+  }
+  &__img {
+    grid-row: 1 / span 2;
+    & svg {
+      fill: var.$color-primary;
+    }
+  }
+  &__subtitle {
+    font-size: 1.6rem;
+  }
+  &__content {
+    font-size: 1.8rem;
+  }
+  &__story {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 2rem;
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 1.5rem;
+      border-right: 2px dotted #ccc;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+
+  &__date {
+    font-size: 1.4rem;
+  }
+}

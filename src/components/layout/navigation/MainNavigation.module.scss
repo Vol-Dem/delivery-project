@@ -1,8 +1,9 @@
 @use "../../../variables/variables.scss" as var;
 
 .nav-main {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
+  margin-left: auto;
   & ul {
     display: flex;
     gap: 2rem;
@@ -33,5 +34,11 @@
 
   &:hover::before {
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-main {
+    display: none;
   }
 }

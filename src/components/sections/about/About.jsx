@@ -4,15 +4,28 @@ import { ReactComponent as AppImg } from "../../../assets/application.svg";
 import Titles from "../../../ui/Titles";
 import classes from "./About.module.scss";
 import Wrap from "../../layout/Wrap";
+import { useRef } from "react";
+import useIntersection from "../../hooks/use-intersection";
 
 const About = () => {
+  const sectionRef = useRef();
+  const isIntersecting = useIntersection(sectionRef);
+
   return (
-    <section className={classes["about-section"]}>
+    <section ref={sectionRef} className={classes["about-section"]}>
       <Wrap>
         <div className={classes.container}>
-          <AppImg className={classes["about-section__img"]} />
+          <AppImg
+            className={`${classes["about-section__img"]} ${
+              isIntersecting ? classes["about-section__img--animate"] : ""
+            }`}
+          />
 
-          <div className={classes["about-section__content"]}>
+          <div
+            className={`${classes["about-section__content"]} ${
+              isIntersecting ? classes["about-section__content--animate"] : ""
+            }`}
+          >
             <Titles
               main={"Courier delivery service"}
               sub="About Us"

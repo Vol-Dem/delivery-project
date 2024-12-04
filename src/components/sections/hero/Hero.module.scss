@@ -1,244 +1,65 @@
 @use "../../../variables/variables.scss" as var;
+@use "../../../variables/mixins.scss" as mix;
 
 .hero {
   display: flex;
   align-items: flex-end;
   position: relative;
   height: 70rem;
-
-  // display: grid;
-  // grid-template-columns: 1fr 4fr 1fr;
-  // grid-template-rows: 1fr auto;
-  // align-items: end;
-  // min-height: 75vh;
-  // max-width: 120rem;
-  // margin: 0 auto;
-  // border-bottom: 1rem solid #fff;
-  // background: linear-gradient(120deg, var.$color-primary, #0b62a0);
-  // background: linear-gradient(225deg, #0072ff, #004fa1);
-  // background: linear-gradient(225deg, #be3389, #0f4fb3);
-
-  // background-image: linear-gradient(
-  //   35deg,
-  //   hsl(240deg 100% 20%) 1%,
-  //   hsl(308deg 100% 24%) 40%,
-  //   hsl(331deg 100% 38%) 48%,
-  //   hsl(355deg 89% 58%) 51%,
-  //   hsl(26deg 100% 56%) 51%,
-  //   hsl(47deg 100% 50%) 50%,
-  //   hsl(48deg 100% 50%) 50%,
-  //   hsl(32deg 100% 50%) 49%,
-  //   hsl(344deg 100% 50%) 49%,
-  //   hsl(329deg 100% 50%) 52%,
-  //   hsl(308deg 100% 44%) 60%,
-  //   hsl(244deg 100% 50%) 99%
-  // );
-
-  // background-image: linear-gradient(
-  //   0deg,
-  //   hsl(240deg 100% 20%) 1%,
-  //   hsl(308deg 100% 24%) 40%,
-  //   hsl(331deg 100% 38%) 48%,
-  //   hsl(355deg 89% 58%) 51%,
-  //   hsl(26deg 100% 56%) 51%,
-  //   hsl(47deg 100% 50%) 50%,
-  //   hsl(48deg 100% 50%) 50%,
-  //   hsl(32deg 100% 50%) 49%,
-  //   hsl(344deg 100% 50%) 49%,
-  //   hsl(329deg 100% 50%) 52%,
-  //   hsl(308deg 100% 44%) 60%,
-  //   hsl(244deg 100% 50%) 99%
-  // );
-
-  // background-image: linear-gradient(
-  //   0deg,
-  //   hsl(240deg 100% 20%) 0%,
-  //   hsl(315deg 100% 27%) 21%,
-  //   hsl(337deg 100% 43%) 27%,
-  //   hsl(17deg 100% 59%) 30%,
-  //   hsl(45deg 100% 50%) 32%,
-  //   hsl(47deg 100% 50%) 34%,
-  //   hsl(21deg 100% 55%) 37%,
-  //   hsl(336deg 100% 50%) 42%,
-  //   hsl(316deg 100% 48%) 53%,
-  //   hsl(244deg 100% 50%) 100%
-  // );
-
-  // background-image: linear-gradient(
-  //   0deg,
-  //   hsl(240deg 100% 20%) 0%,
-  //   hsl(304deg 100% 23%) -1%,
-  //   hsl(329deg 100% 36%) -1%,
-  //   hsl(346deg 83% 51%) -1%,
-  //   hsl(17deg 100% 59%) 0%,
-  //   hsl(40deg 100% 50%) 2%,
-  //   hsl(55deg 100% 50%) 5%,
-  //   hsl(42deg 100% 50%) 10%,
-  //   hsl(21deg 100% 55%) 16%,
-  //   hsl(340deg 100% 50%) 26%,
-  //   hsl(327deg 100% 50%) 40%,
-  //   hsl(304deg 100% 43%) 62%,
-  //   hsl(244deg 100% 50%) 100%
-  // );
-
   color: var.$color-text-white;
   overflow: hidden;
-
-  // padding: 15rem 4rem 0;
 }
 
 .container {
   display: grid;
-  // grid-template-columns: auto 1fr auto;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr auto;
   align-items: end;
   min-height: 75vh;
   max-width: 120rem;
   margin: 0 auto;
-  // border-bottom: 1rem solid #fff;
-  // background-color: var.$color-primary;
-  // position: relative;
   overflow: hidden;
-  padding: 15rem 4rem 0;
+  padding: 4rem 4rem 0;
   row-gap: 7rem;
   width: 100%;
   margin-bottom: 1rem;
-  // margin-bottom: 0;
 }
 
-h1 {
+.title {
   font-size: 5rem;
-  padding: 2rem;
-  letter-spacing: 0.2rem;
-}
+  animation: slideInUp 1s ease forwards;
 
-h1 span {
-  font-size: 2.6rem;
-  display: block;
-  letter-spacing: 0.2rem;
+  & span {
+    font-size: 2.6rem;
+    display: block;
+  }
 }
-
-// .hero svg {
-//   fill: #fff;
-// }
 
 .house-img {
-  // fill: #fff;
   z-index: 222;
-  // height: 12rem;
+  animation: slideInUp 1s ease forwards;
 }
 
 .warehouse-img {
-  // height: 100%;
   z-index: 222;
+  animation: slideInUp 1s ease forwards;
 }
 
 .city-img {
   position: absolute;
   width: 100%;
   opacity: 0.4;
-  // bottom: 115px;
-  // bottom: 40px;
-  // left: 5%;
   z-index: 5;
   transform: rotate(35deg);
-  // background-color: black;
-  // margin: 0 auto;
-  // animation: speed 8s infinite linear;
 }
-
-// .bg-container {
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   top: 0;
-//   left: 0;
-// }
-
-// .bg-grad {
-//   position: absolute;
-//   width: 100%;
-//   height: 150%;
-//   // opacity: 0.9;
-//   // bottom: -280px;
-//   left: 0;
-//   z-index: 4;
-//   // background-image: linear-gradient(
-//   //   0deg,
-//   //   hsl(240deg 100% 20%) 1%,
-//   //   hsl(308deg 100% 24%) 40%,
-//   //   hsl(331deg 100% 38%) 48%,
-//   //   hsl(355deg 89% 58%) 51%,
-//   //   hsl(26deg 100% 56%) 51%,
-//   //   hsl(47deg 100% 50%) 50%,
-//   //   hsl(48deg 100% 50%) 50%,
-//   //   hsl(32deg 100% 50%) 49%,
-//   //   hsl(344deg 100% 50%) 49%,
-//   //   hsl(329deg 100% 50%) 52%,
-//   //   hsl(308deg 100% 44%) 60%,
-//   //   hsl(244deg 100% 50%) 99%
-//   // );
-//   background-image: linear-gradient(
-//     35deg,
-//     hsl(240deg 100% 20%) 1%,
-//     hsl(308deg 100% 24%) 40%,
-//     hsl(331deg 100% 38%) 48%,
-//     hsl(355deg 89% 58%) 51%,
-//     hsl(26deg 100% 56%) 51%,
-//     hsl(47deg 100% 50%) 50%,
-//     hsl(48deg 100% 50%) 50%,
-//     hsl(32deg 100% 50%) 49%,
-//     hsl(344deg 100% 50%) 49%,
-//     hsl(329deg 100% 50%) 52%,
-//     hsl(308deg 100% 44%) 60%,
-//     hsl(244deg 100% 50%) 99%
-//   );
-// }
 
 .bg-sky {
   position: absolute;
   width: 150vw;
   height: 150vw;
-  // left: -37.5vw;
   left: calc(50% - 75vw);
   bottom: -90vw;
-
-  // width: 400px;
-  // height: 400px;
-  // background: linear-gradient(0deg, #f0f, transparent),
-  //   linear-gradient(120deg, #ff0, transparent),
-  //   linear-gradient(-120deg, #0ff, transparent);
-  // background: linear-gradient(0deg, #f0f, transparent),
-  //   linear-gradient(120deg, rgb(0, 255, 255), transparent),
-  //   linear-gradient(-120deg, rgb(0, 81, 255), transparent);
-  // background: linear-gradient(0deg, rgb(0, 238, 255), transparent),
-  //   linear-gradient(90deg, rgb(225, 0, 255), transparent),
-  //   linear-gradient(180deg, #004fa1, transparent),
-  //   linear-gradient(240deg, #ffee00, transparent);
-
-  // background: linear-gradient(0deg, #be3389, transparent 70%),
-  //   linear-gradient(60deg, #9f0268, transparent 70%),
-  //   linear-gradient(120deg, #001fff, transparent 70%),
-  //   linear-gradient(180deg, #00aaff, transparent 70%),
-  //   linear-gradient(240deg, #00bcd4, transparent 70%),
-  //   linear-gradient(300deg, #00b8ff, transparent 70%),
-  //   linear-gradient(260deg, #ffee00, transparent 70%);
-
-  // background: linear-gradient(0deg, #be3389, transparent 50%),
-  //   linear-gradient(60deg, #0f4fb3, transparent 50%),
-  //   linear-gradient(120deg, #0072ff, transparent 50%),
-  //   linear-gradient(180deg, #ffffff, transparent 50%),
-  //   linear-gradient(240deg, #0046b8, transparent 50%),
-  //   linear-gradient(300deg, #000000, transparent 50%),
-  //   linear-gradient(260deg, #004fa1, transparent 50%);
-  // background-blend-mode: multiply;
-
-  // background-blend-mode: darken;
-
-  // background-blend-mode: multiply;
   border-radius: 50%;
-  // filter: blur(5px);
   animation: spin infinite 8.4s linear reverse;
 }
 
@@ -246,6 +67,8 @@ h1 span {
   font-size: 1.8rem;
   margin-bottom: 2.4rem;
   max-width: 60rem;
+  margin-top: 2rem;
+  animation: slideInUp 1s ease forwards 0.1s;
 }
 
 .form {
@@ -254,6 +77,7 @@ h1 span {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  animation: slideInUp 1s ease forwards 0.2s;
 }
 
 .content {
@@ -317,10 +141,16 @@ h1 span {
     position: absolute;
     border-radius: 50%;
     // border: 4px solid #fff;
-    bottom: -8%;
+    bottom: -5%;
     width: 14%;
-    height: 28%;
+    height: 0;
+    padding-bottom: 14%;
     animation: spin infinite 1.4s linear;
+    & svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
     &--1 {
       left: 14%;
@@ -488,10 +318,35 @@ h1 span {
   .container {
     grid-template-columns: 1fr;
   }
+
+  .title {
+    font-size: 4rem;
+  }
+
+  .title span {
+    font-size: 2.2rem;
+  }
+  .hero-text {
+    font-size: 1.6rem;
+  }
 }
 
-// @media (max-width: 120rem) {
-//   .hero {
-//     height: 65rem;
-//   }
-// }
+@media (max-width: 900px) {
+  .truck {
+    .tires {
+      bottom: -2%;
+    }
+  }
+}
+
+@media (max-width: 390px) {
+  .truck {
+    .tires {
+      // bottom: -1%;
+    }
+  }
+}
+
+@include mix.slideInUp;
+@include mix.slideInLeft;
+@include mix.slideInRight;

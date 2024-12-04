@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "./Slider.module.scss";
 
-const Slider = ({ sliderData }) => {
+const Slider = ({ sliderData, className }) => {
   const [slideIsVisible, setSlideIsVisible] = useState([]);
   const [translate, setTranslate] = useState(0);
   const [translateIntervals, setTranslateIntervals] = useState([]);
@@ -58,7 +58,8 @@ const Slider = ({ sliderData }) => {
   };
 
   const moveElement = (e) => {
-    const pointerX = Math.round(e.clientX - marginLeft);
+    const clientX = Math.round(e.clientX || e.touches[0].clientX);
+    const pointerX = Math.round(clientX - marginLeft);
 
     if (mouseDown) {
       const neTrans = pointerX - cursorInitialX;
@@ -69,10 +70,12 @@ const Slider = ({ sliderData }) => {
   };
 
   const mouseDownHandler = (e) => {
-    const pointerX = Math.round(e.clientX - marginLeft);
+    const clientX = Math.round(e.clientX || e.touches[0].clientX);
+    const pointerX = Math.round(clientX - marginLeft);
     setCursorInitialX(pointerX);
     setMouseDown(true);
   };
+
   const mouseUp = () => {
     setMouseDown(false);
     const transNew = translateIntervals.reduce((prev, curr) => {
@@ -80,7 +83,6 @@ const Slider = ({ sliderData }) => {
         ? curr
         : prev;
     });
-    console.log(transNew);
     const transFinal = transNew < translateMax ? translateMax : transNew;
     setTranslate(transFinal);
   };
@@ -112,7 +114,11 @@ const Slider = ({ sliderData }) => {
     );
   });
   return (
-    <div className={classes["slider"]} onMouseUp={mouseUp} onTouchEnd={mouseUp}>
+    <div
+      className={`${classes["slider"]} ${className || ""}`}
+      onMouseUp={mouseUp}
+      onTouchEnd={mouseUp}
+    >
       <div
         ref={containerRef}
         className={classes["slider__container"]}
@@ -134,7 +140,7 @@ const Slider = ({ sliderData }) => {
                 <div className={classes["slides__img"]}>
                   <slide.img />
                 </div>
-                <h5 className={classes["slides__title"]}>{slide.title}</h5>
+                <h4 className={classes["slides__title"]}>{slide.title}</h4>
                 <p className={classes["slides__description"]}>
                   {slide.description}
                 </p>
@@ -144,13 +150,21 @@ const Slider = ({ sliderData }) => {
         </div>
       </div>
       <div className={classes["slider__controls"]}>
-        <button className={classes["slider__btn"]} onClick={prevSlide}>
+        <button
+          className={classes["slider__btn"]}
+          onClick={prevSlide}
+          title="Previous"
+        >
           <span
             className={`${classes["slider__arrow"]} ${classes["slider__arrow--left"]}`}
           ></span>
         </button>
         <div className={classes["slider__line"]}>{paginaton}</div>
-        <button className={classes["slider__btn"]} onClick={nextSlide}>
+        <button
+          className={classes["slider__btn"]}
+          onClick={nextSlide}
+          title="Next"
+        >
           <span
             className={`${classes["slider__arrow"]} ${classes["slider__arrow--right"]}`}
           ></span>

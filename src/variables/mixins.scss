@@ -57,3 +57,79 @@
     z-index: -1;
   }
 }
+
+/////////// ANIMATION ///////////////
+
+@mixin slideInLeft {
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+}
+
+@mixin slideInRight {
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+}
+
+@mixin slideInUp {
+  @keyframes slideInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(2.5rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
+
+@mixin slideInDown {
+  @keyframes slideInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
+
+@mixin spin {
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// @mixin spinSlide {
+//   @keyframes spin {
+//     from {
+//       transform: rotate(0deg);
+//     }
+//     to {
+//       transform: rotate(360deg);
+//     }
+//   }
+// }

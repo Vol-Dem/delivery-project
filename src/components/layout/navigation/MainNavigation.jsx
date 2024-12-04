@@ -33,6 +33,11 @@ const MainNavigation = () => {
             Steps
           </a>
         </li>
+        <li className={classes["nav__item"]}>
+          <a className={classes["nav__link"]} href="#section-contacts">
+            Contacts
+          </a>
+        </li>
       </ul>
     </nav>
   );

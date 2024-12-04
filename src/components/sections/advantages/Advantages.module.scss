@@ -25,15 +25,19 @@
 }
 
 .advantages__head {
+  opacity: 0;
   &__titles {
     color: #fff;
-    & h5 {
+    & h3 {
       color: #fff;
     }
-    // text-align: right;
   }
 
   &--button {
+  }
+
+  &--animate {
+    animation: slideInUp 1s ease forwards;
   }
 }
 .advantages {
@@ -42,8 +46,45 @@
   gap: 4rem;
   padding: 3rem 0;
   margin-top: 2rem;
+  // opacity: 0;
+
+  &__card {
+    opacity: 0;
+    &--animate-1 {
+      animation: slideInUp 1s ease forwards;
+    }
+    &--animate-2 {
+      animation: slideInUp 1s ease forwards 0.1s;
+    }
+    &--animate-3 {
+      animation: slideInUp 1s ease forwards 0.2s;
+    }
+    &--animate-4 {
+      animation: slideInUp 1s ease forwards 0.3s;
+    }
+  }
 }
 
 .container {
   //   margin: 0 5rem;
 }
+
+@media (max-width: 1130px) {
+  .advantages {
+    grid-template-columns: repeat(2, 1fr);
+    // gap: 4rem;
+    // padding: 3rem 0;
+    // margin-top: 2rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .advantages {
+    grid-template-columns: 1fr;
+  }
+}
+
+@include mix.slideInLeft;
+@include mix.slideInRight;
+@include mix.slideInUp;
+@include mix.slideInDown;

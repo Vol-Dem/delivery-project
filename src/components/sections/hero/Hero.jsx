@@ -6,16 +6,42 @@ import { ReactComponent as TreeIcon } from "./../../../assets/tree.svg";
 import { ReactComponent as WheelIcon } from "./../../../assets/wheel.svg";
 import Button from "../../../ui/Button";
 import Input from "../../../ui/Input";
+import Modal from "../../../ui/Modal";
+import Tracking from "../../tracking/Tracking";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { animate, stagger } from "framer-motion";
 
 const Hero = () => {
+  const [trackingIsOpen, setTrackingIsOpen] = useState(false);
+  const [trackingNumber, setTrackingNumber] = useState("");
+
+  // const openTrackingHandler = () => {
+  //   setTrackingIsOpen(true);
+  // };
+  const closeTrackingHandler = () => {
+    setTrackingIsOpen(false);
+  };
   const formHandler = (e) => {
     e.preventDefault();
+    const inputValue = e.target[0].value;
+    if (!inputValue) {
+      animate(
+        "#track",
+        { rotate: [-5, 0, 5, 0] },
+        { type: "spring", duration: 0.2, delay: stagger(0.05) }
+      );
+    }
+    if (inputValue) {
+      setTrackingNumber(inputValue);
+      setTrackingIsOpen(true);
+    }
   };
   return (
     <section className={classes.hero} id="section-hero">
       <div className={classes["container"]}>
         <div className={classes.content}>
-          <h1>
+          <h1 className={classes.title}>
             Express delivery
             <span>for online stores within the city</span>
           </h1>
@@ -25,8 +51,8 @@ const Hero = () => {
             customers
           </p>
           <form onSubmit={formHandler} className={classes.form} action="">
-            <Input type="text" placeholder="Enter track number" />
-            <Button>Track</Button>
+            <Input id="track" type="text" placeholder="Enter track number" />
+            <Button type="submit">Track</Button>
           </form>
         </div>
         <HouseIcon className={classes["warehouse-img"]} />
@@ -53,13 +79,14 @@ const Hero = () => {
 
         <BuildingIcon className={classes["house-img"]} />
         <div className={classes["bg-sky"]}></div>
-        {/* <div className={classes["bg-container"]}>
-          <div className={classes["bg-grad"]}>
-            <CityImg className={classes["city-img"]} />
-          </div>
-        </div> */}
       </div>
-      {/* <CityImg className={classes["city-img"]} /> */}
+      <AnimatePresence>
+        {trackingIsOpen && (
+          <Modal onClose={closeTrackingHandler}>
+            <Tracking trackingNumber={trackingNumber} />
+          </Modal>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

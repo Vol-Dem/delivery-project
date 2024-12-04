@@ -6,7 +6,7 @@ import { ReactComponent as CloudV3Img } from "./../../assets/bg-elements/cloud3.
 
 const HeroBackground = () => {
   return (
-    <>
+    <div className={classes["bg-container"]}>
       <div className={`${classes["bg-grad"]} ${classes["bg-grad--day"]}`}></div>
       <div
         className={`${classes["bg-grad"]} ${classes["bg-grad--night"]}`}
@@ -22,7 +22,7 @@ const HeroBackground = () => {
       <CloudV3Img
         className={`${classes["cloud-img"]} ${classes["cloud-img--3"]}`}
       />
-    </>
+    </div>
   );
 };
 

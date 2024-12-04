@@ -9,17 +9,28 @@
 
 .about-section {
   position: relative;
-  padding: 2rem 0rem;
+  padding-top: 4rem;
   @include mix.bg-gradient-circles;
   &__img {
     width: 45%;
     filter: var.$drop-shadow;
     flex-shrink: 0;
+    opacity: 0;
+  }
+
+  &__img--animate {
+    animation: slideInLeft 1s ease-out forwards;
   }
 
   &__content {
+    opacity: 0;
     padding: 3rem;
   }
+
+  &__content--animate {
+    animation: slideInRight 1s ease-out forwards;
+  }
+
   &__titles {
     margin-top: 3rem;
   }
@@ -38,7 +49,7 @@
   }
   &__info {
     display: flex;
-
+    gap: 2rem;
     margin: 4rem 0 3rem 0;
 
     &-bg {
@@ -51,7 +62,7 @@
         blueviolet 50%
       );
       background-size: 250%;
-      margin-right: 2rem;
+
       transition: all 0.4s;
 
       &:hover {
@@ -92,3 +103,30 @@
     }
   }
 }
+
+@media (max-width: 990px) {
+  .about-section {
+    &__img {
+      width: 60%;
+    }
+  }
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-section {
+    &__info {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+  }
+  .container {
+    flex-direction: column;
+  }
+}
+
+@include mix.slideInLeft;
+@include mix.slideInRight;

@@ -1,9 +1,12 @@
 @use "../../../variables/variables.scss" as var;
+@use "../../../variables/mixins.scss" as mix;
 
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   align-items: center;
-  gap: 4rem;
+  gap: 0 4rem;
 }
 
 .contacts-section {
@@ -29,18 +32,42 @@
 }
 
 .contacts-img {
-  width: 90rem;
+  width: 100%;
+  grid-row: 1/-1;
+  grid-column: 2/3;
   filter: var.$drop-shadow;
+  opacity: 0;
+
+  &--animate {
+    animation: slideInRight 1.2s forwards;
+  }
+}
+
+.contacts__title {
+  // max-width: 90%;
+  opacity: 0;
+  &--animate {
+    animation: slideInUp 1s forwards;
+  }
 }
 
 .contacts-content {
+  opacity: 1;
+
   &__text {
     margin-top: 3rem;
+    font-size: 1.8rem;
+    opacity: 0;
+
+    &--animate {
+      animation: slideInUp 1s forwards 0.2s;
+    }
   }
   &__list {
     margin-top: 2rem;
     font-size: 1.6rem;
     margin-left: 4rem;
+    -webkit-columns: 2;
     columns: 2;
   }
 
@@ -50,10 +77,16 @@
     gap: 2rem;
     font-size: 3.2rem;
     margin-top: 4rem;
+    opacity: 0;
+
+    &--animate {
+      animation: slideInUp 1s forwards 0.3s;
+    }
   }
 
   &__phone-img {
     width: 6rem;
+
     // border: 2px solid #000;
     // background-color: rgb(255, 255, 255);
     border-radius: 50%;
@@ -64,5 +97,33 @@
 
   &__btn {
     margin-top: 5rem;
+    opacity: 0;
+
+    &--animate {
+      animation: slideInUp 1s forwards 0.4s;
+    }
   }
 }
+
+@media (max-width: 960px) {
+  .contacts__title {
+    grid-column: 1/-1;
+  }
+
+  .contacts-img {
+    grid-row: 2/-1;
+    grid-column: 2/3;
+  }
+}
+
+@media (max-width: 700px) {
+  .contacts-img {
+    display: none;
+  }
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@include mix.slideInRight;
+@include mix.slideInUp;
