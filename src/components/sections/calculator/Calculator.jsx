@@ -20,7 +20,7 @@ import {
 } from "../../../variables/constants";
 import TermsPrivacyField from "../../forms/ui/TermsPrivacyField";
 
-const visibleCitiesAmoun = 200;
+const visibleCitiesAmount = 200;
 
 const Calculator = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -80,7 +80,7 @@ const Calculator = () => {
   const [selectedDestinationCity, setSelectedDestinationCity] = useState({});
 
   const [countriesIsLoading, setCountriesIsLoading] = useState(false);
-  const [dispatchCitiesIsLoading, setDispatchCitiesIsIsLoading] =
+  const [dispatchCitiesIsLoading, setDispatchCitiesIsLoading] =
     useState(false);
   const [destinationCitiesIsLoading, setDestinationCitiesIsLoading] =
     useState(false);
@@ -127,7 +127,7 @@ const Calculator = () => {
               .toLowerCase()
               .includes(dispatchCityQuery.toLowerCase());
           })
-          .slice(0, visibleCitiesAmoun);
+          .slice(0, visibleCitiesAmount);
   }, [selectedDispatchCountry, dispatchCityQuery, citiesOfDispatchCountry]);
 
   const filteredDestinationCity = useMemo(() => {
@@ -139,7 +139,7 @@ const Calculator = () => {
               .toLowerCase()
               .includes(destinationCityQuery.toLowerCase());
           })
-          .slice(0, visibleCitiesAmoun);
+          .slice(0, visibleCitiesAmount);
   }, [
     selectedDestinationCountry,
     destinationCityQuery,
@@ -165,12 +165,12 @@ const Calculator = () => {
         getCitiesInfo(
           selectedDispatchCountry.countryCode,
           setCitiesOfDispatchCountry,
-          setDispatchCitiesIsIsLoading
+          setDispatchCitiesIsLoading
         );
       }
     } catch (err) {
       console.log(err.message);
-      setDispatchCitiesIsIsLoading(false);
+      setDispatchCitiesIsLoading(false);
     }
   }, [selectedDispatchCountry, getCitiesInfo]);
 

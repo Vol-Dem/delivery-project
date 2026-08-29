@@ -9,7 +9,7 @@ const Slider = ({ sliderData, className }) => {
   const [mouseDown, setMouseDown] = useState(false);
   const [cursorInitialX, setCursorInitialX] = useState(0);
   const [marginLeft, setMarginLeft] = useState(0);
-  const [itemWidth, setitemWidth] = useState(0);
+  const [itemWidth, setItemWidth] = useState(0);
   const containerRef = useRef();
   const sliderRef = useRef();
   const itemRef = useRef();
@@ -29,7 +29,7 @@ const Slider = ({ sliderData, className }) => {
       setTranslateIntervals(intervals);
       setTranslateMax(transMax);
       setMarginLeft(marginLeft);
-      setitemWidth(itemWidth);
+      setItemWidth(itemWidth);
       setTranslate(0);
     });
     observer.observe(containerRef.current);
@@ -99,7 +99,7 @@ const Slider = ({ sliderData, className }) => {
     setSlideIsVisible(visibleSlides);
   }, [translate, translateIntervals]);
 
-  const paginaton = sliderData.map((slide, i) => {
+  const pagination = sliderData.map((slide, i) => {
     return (
       <div
         key={i}
@@ -157,7 +157,7 @@ const Slider = ({ sliderData, className }) => {
             className={`${classes["slider__arrow"]} ${classes["slider__arrow--left"]}`}
           ></span>
         </button>
-        <div className={classes["slider__line"]}>{paginaton}</div>
+        <div className={classes["slider__line"]}>{pagination}</div>
         <button
           className={classes["slider__btn"]}
           onClick={nextSlide}

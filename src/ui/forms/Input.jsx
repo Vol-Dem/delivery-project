@@ -16,10 +16,10 @@ const Input = (props) => {
     readOnly,
     placeholder,
   } = props;
-  const onBlurIvent = (e) => {
+  const onBlurEvent = (e) => {
     onBlur && onBlur(e.target.value);
   };
-  const onChangeIvent = (e) => {
+  const onChangeEvent = (e) => {
     onChange && onChange(e.target.value);
   };
 
@@ -30,8 +30,8 @@ const Input = (props) => {
         <input
           id={id}
           type={type}
-          onBlur={onBlurIvent}
-          onChange={onChangeIvent}
+          onBlur={onBlurEvent}
+          onChange={onChangeEvent}
           placeholder={placeholder}
           {...input}
           className={`${classes.input} ${className || ""}`}
