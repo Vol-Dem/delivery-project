@@ -40,7 +40,7 @@ const Select = ({ options, onChange, className }) => {
 
   const selectOptions = options.map((item, i) => {
     return (
-      <div key={i} className={classes["select__item"]}>
+      <div key={i}>
         <input
           className={classes["select__radio"]}
           type="radio"

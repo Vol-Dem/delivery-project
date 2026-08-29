@@ -20,7 +20,7 @@ const ComboSelect = ({
 }) => {
   const conditionalPlaceholder = !loading ? placeholder : "Loading...";
   return (
-    <div className="mx-auto h-screen w-52 pt-20">
+    <div>
       <Combobox
         immediate
         value={selected}
@@ -81,9 +81,7 @@ const ComboSelect = ({
                           options?.countryName === selected?.name && (
                             <CheckIcon className={classes.check} />
                           ))}
-                      <div className="text-sm/6 text-white">
-                        {options?.name || options?.countryName}
-                      </div>
+                      <div>{options?.name || options?.countryName}</div>
                     </ComboboxOption>
                   ))}
                 </ComboboxOptions>

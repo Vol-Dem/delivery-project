@@ -261,9 +261,6 @@ const Calculator = () => {
         <Input
           type="email"
           placeholder="Email"
-          className={`${classes["auth__input"]} ${
-            showEmailError && !emailIsValid ? classes.invalid : ""
-          }`}
           onBlur={showEmailErrorHandler}
           error={showEmailError && emailErrorMessage}
           autoFocus={true}
