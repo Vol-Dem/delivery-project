@@ -31,9 +31,14 @@ const Modal = (props) => {
             className={`${classes.modal} ${classes["modal--content"]}`}
           >
             {props.children}
-            <div className={classes["modal__close"]} onClick={props.onClose}>
+            <button
+              type="button"
+              className={classes["modal__close"]}
+              aria-label="Close dialog"
+              onClick={props.onClose}
+            >
               <span className={classes["modal__cross"]}></span>
-            </div>
+            </button>
           </motion.div>
         </>,
         document.body
