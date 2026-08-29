@@ -12,7 +12,7 @@ const Select = ({ options, onChange, className }) => {
 
   const onSelectChange = (e) => {
     setSelectValue(e.target.value);
-    onChange(e.target.value);
+    onChange?.(e.target.value);
     setSelectIsOpen(false);
   };
 

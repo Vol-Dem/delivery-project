@@ -19,17 +19,11 @@ import {
   API_GEONAMES_SEARCH_URL,
 } from "../../../variables/constants";
 import TermsPrivacyField from "../../forms/ui/TermsPrivacyField";
-import Checkbox from "../../../ui/forms/Checkbox";
-import LinkA from "../../../ui/LinkA";
 
 const visibleCitiesAmoun = 200;
 
 const Calculator = () => {
-  const [dispatchCity, setDispatchCity] = useState("");
-  const [destinationCity, setDestinationCity] = useState("");
-  const [parcelSize, setParcelSize] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [deliveryFormData, setDeliveryFormData] = useState("");
   const [requestIsSended, setRequestIsSended] = useState(false);
   const sectionRef = useRef();
   const isIntersecting = useIntersection(sectionRef);
@@ -203,16 +197,6 @@ const Calculator = () => {
     setShowEmailError(true);
   };
 
-  const onDispatchCityChangeHandler = (e) => {
-    setDispatchCity(e.target.value);
-  };
-  const onDestinationCityChangeHandler = (e) => {
-    setDestinationCity(e.target.value);
-  };
-  const onParcelSizeChangeHandler = (size) => {
-    setParcelSize(size);
-  };
-
   const onTagDispatch = (e) => {
     const countryName = e.target.dataset.tag;
     const countryCode = e.target.dataset.iso;
@@ -222,7 +206,6 @@ const Calculator = () => {
     }
     setDispatchCityQuery("");
     setSelectedDispatchCity({});
-    // setDispatchCountryQuery(countryName);
     setSelectedDispatchCountry({ countryName, countryCode, isoNumeric });
   };
 
@@ -236,19 +219,12 @@ const Calculator = () => {
 
     setDestinationCityQuery("");
     setSelectedDestinationCity({});
-    // setDestinationCountryQuery(countryName)
     setSelectedDestinationCountry({ countryName, countryCode, isoNumeric });
   };
 
   const onCalculatorSubmit = (e) => {
     e.preventDefault();
-    const deliveryData = {
-      dispatchCity,
-      destinationCity,
-      parcelSize,
-    };
     setModalIsOpen(true);
-    setDeliveryFormData(deliveryData);
   };
 
   const onFormSubmit = (e) => {
@@ -351,7 +327,6 @@ const Calculator = () => {
 
             <Select
               options={selectData}
-              onChange={onParcelSizeChangeHandler}
               className={classes["calculator__select"]}
             />
             <div className={classes["calculator__direction"]}>TO</div>
