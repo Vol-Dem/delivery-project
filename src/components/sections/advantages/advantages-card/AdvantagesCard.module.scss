@@ -20,7 +20,7 @@
     transform: rotateY(0deg) translate3d(0, 0, 0);
   }
   &:hover &__text--back {
-    color: #2a1976;
+    color: var.$color-text-dark;
     transform: rotateY(0deg) translate3d(0, 0, 0);
   }
 
@@ -43,7 +43,7 @@
     transform-style: preserve-3d;
 
     &--front {
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(var.$color-white, 0.7);
       padding-top: 4rem;
     }
     &--back {
@@ -52,7 +52,7 @@
       left: 0;
 
       background-image: url(../../../../assets/bg-elements/bg-dotted.svg),
-        linear-gradient(to top, #c2005e, #0037ba);
+        var.$gradient-main-top-dark;
       background-position: center;
       background-size: cover;
       transform: rotateY(-180deg) translate3d(-8rem, 0, -5rem);
@@ -73,19 +73,19 @@
   }
 
   &__title {
-    color: #2a1976;
+    color: var.$color-text-dark;
     font-size: 2.4rem;
     transform: translate3d(0, 0, 55rem);
     transition: all 0.8s;
 
     &--back {
-      color: #fff;
+      color: var.$color-white;
       transform: translate3d(5rem, 0, 5rem);
     }
   }
 
   &__text {
-    color: #fff;
+    color: var.$color-white;
     font-size: 1.6rem;
     transform: translate3d(0, 0, 5rem);
     transition: all 0.8s;

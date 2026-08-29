@@ -35,7 +35,7 @@
     padding: 4rem 3rem;
     max-width: 28rem;
     border-radius: 1rem;
-    background-color: #fff;
+    background-color: var.$color-white;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.1s ease-in;
 
@@ -72,7 +72,7 @@
     }
 
     &--blue {
-      color: #fff;
+      color: var.$color-white;
       background: linear-gradient(to top, #2196f3, #1d3def);
       justify-self: right;
       &::before {
@@ -104,7 +104,7 @@
       top: -6rem;
       left: 50%;
       transform: translateX(-62%);
-      stroke: #fff;
+      stroke: var.$color-white;
       z-index: 222;
       filter: drop-shadow(4px 6px 4px rgba(22, 0, 0, 0.2));
     }
@@ -114,7 +114,7 @@
       top: -6rem;
       left: 50%;
       transform: translateX(-47%);
-      stroke: #fff;
+      stroke: var.$color-white;
       z-index: 222;
       filter: drop-shadow(4px 6px 4px rgba(22, 0, 0, 0.2));
     }

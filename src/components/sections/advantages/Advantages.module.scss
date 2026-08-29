@@ -9,7 +9,7 @@
 .advantages-section {
   position: relative;
   background: url(../../../assets/bg-elements/bg-dotted.svg) 0 -75px,
-    linear-gradient(to top, #c2005e, #0037ba);
+    var.$gradient-main-top-dark;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -27,9 +27,9 @@
 .advantages__head {
   opacity: 0;
   &__titles {
-    color: #fff;
+    color: var.$color-white;
     & h3 {
-      color: #fff;
+      color: var.$color-white;
     }
   }
 

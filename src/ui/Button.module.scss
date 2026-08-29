@@ -1,9 +1,11 @@
+@use "../variables/variables.scss" as var;
+
 .button-submint {
   border: none;
   font-family: inherit;
   font-size: 1.4rem;
   font-weight: 600;
-  background-color: #eacc48;
+  background-color: var.$color-secondary;
   padding: 1.6rem 3rem;
   border-radius: 0.8rem;
   text-transform: uppercase;
@@ -12,12 +14,12 @@
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
-    box-shadow: 0 0 1.3rem 0.1rem rgb(234, 204, 72);
+    box-shadow: 0 0 1.3rem 0.1rem var.$color-secondary;
     transform: translateY(-1px);
   }
   &:active {
     transform: translateY(1px);
-    box-shadow: 0 0 1rem 0rem rgb(234, 204, 72);
+    box-shadow: 0 0 1rem 0rem var.$color-secondary;
   }
 
   &:disabled {

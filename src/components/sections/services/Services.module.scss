@@ -60,7 +60,7 @@
 @media (max-width: 1000px) {
   .services-section {
     margin-top: 0;
-    background: #fff;
+    background: var.$color-white;
     // margin-top: -15rem;
     z-index: -1;
   }
