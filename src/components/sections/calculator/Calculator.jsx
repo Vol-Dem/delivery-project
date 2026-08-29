@@ -101,7 +101,7 @@ const Calculator = () => {
       try {
         setCountriesIsLoading(true);
         const resp = await fetch(
-          `${API_GEONAMES_COUNTRY_INFO_URL}?username=${process.env.REACT_APP_GEONAMES_USERNAME}`
+          `${API_GEONAMES_COUNTRY_INFO_URL}?username=${import.meta.env.VITE_GEONAMES_USERNAME}`
         );
         const data = await resp.json();
         setCountriesData(data.geonames);
@@ -156,7 +156,7 @@ const Calculator = () => {
     async (countryCode, setCities, setLoading) => {
       setLoading(true);
       const resp = await fetch(
-        `${API_GEONAMES_SEARCH_URL}?country=${countryCode}&featureClass=P&maxRows=1000&username=${process.env.REACT_APP_GEONAMES_USERNAME}`
+        `${API_GEONAMES_SEARCH_URL}?country=${countryCode}&featureClass=P&maxRows=1000&username=${import.meta.env.VITE_GEONAMES_USERNAME}`
       );
       const data = await resp.json();
       setCities(data.geonames);

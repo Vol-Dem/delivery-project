@@ -6,7 +6,7 @@
 }
 
 @mixin bg-gradient-dotted {
-  background-image: url(../../../assets/bg-elements/bg-dotted.svg),
+  background-image: url("/src/assets/bg-elements/bg-dotted.svg"),
     var.$gradient-main-top-dark;
   background-size: cover;
   background-repeat: no-repeat;
