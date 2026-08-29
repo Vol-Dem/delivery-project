@@ -2,7 +2,8 @@ import classes from "./Tags.module.scss";
 
 const Tags = ({ tagList, onClick }) => {
   const tags = tagList?.map((tag) => (
-    <span
+    <button
+      type="button"
       key={tag.isoNumeric}
       className={classes["tags__item"]}
       data-tag={tag.countryName}
@@ -10,7 +11,7 @@ const Tags = ({ tagList, onClick }) => {
       data-id={tag.isoNumeric}
     >
       {tag.countryName}
-    </span>
+    </button>
   ));
   return (
     <div className={classes["tags"]} onClick={onClick}>
