@@ -19,13 +19,17 @@ const ComboSelect = ({
   disabled,
 }) => {
   const conditionalPlaceholder = !loading ? placeholder : "Loading...";
+  const selectOptionHandler = (value) => setSelected(value);
+  const closeOptionsHandler = () => setQuery("");
+  const queryChangeHandler = (event) => setQuery(event.target.value);
+
   return (
     <div>
       <Combobox
         immediate
         value={selected}
-        onChange={(value) => setSelected(value)}
-        onClose={() => setQuery("")}
+        onChange={selectOptionHandler}
+        onClose={closeOptionsHandler}
       >
         {({ open }) => (
           <>
@@ -41,7 +45,7 @@ const ComboSelect = ({
                 displayValue={(options) =>
                   options?.name || options?.countryName
                 }
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={queryChangeHandler}
               />
               <ComboboxButton className={classes.button}>
                 {!!optionsData?.length && (
@@ -62,28 +66,33 @@ const ComboSelect = ({
                   anchor="bottom"
                   transition
                   className={classes.options}
-                  onAnimationComplete={() => setQuery("")}
+                  onAnimationComplete={closeOptionsHandler}
                 >
-                  {optionsData.map((options, i) => (
-                    <ComboboxOption
-                      key={options?.isoNumeric || i}
-                      value={options}
-                      className={`${classes.option} ${
-                        (options?.name && options?.name === selected?.name) ||
-                        (options?.countryName &&
-                          options?.countryName === selected?.name)
-                          ? classes.selected
-                          : ""
-                      }`}
-                    >
-                      {(options?.name && options?.name === selected?.name) ||
-                        (options?.countryName &&
-                          options?.countryName === selected?.name && (
+                  {optionsData.map((option, index) => {
+                    const optionMatchesByName =
+                      option?.name && option.name === selected?.name;
+                    const optionMatchesCountryName =
+                      option?.countryName &&
+                      option.countryName === selected?.name;
+                    const selectedClass =
+                      optionMatchesByName || optionMatchesCountryName
+                        ? classes.selected
+                        : "";
+
+                    return (
+                      <ComboboxOption
+                        key={option?.isoNumeric || index}
+                        value={option}
+                        className={`${classes.option} ${selectedClass}`}
+                      >
+                        {optionMatchesByName ||
+                          (optionMatchesCountryName && (
                             <CheckIcon className={classes.check} />
                           ))}
-                      <div>{options?.name || options?.countryName}</div>
-                    </ComboboxOption>
-                  ))}
+                        <div>{option?.name || option?.countryName}</div>
+                      </ComboboxOption>
+                    );
+                  })}
                 </ComboboxOptions>
               )}
             </AnimatePresence>
