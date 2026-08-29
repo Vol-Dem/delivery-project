@@ -22,49 +22,50 @@ import TermsPrivacyField from "../../forms/ui/TermsPrivacyField";
 
 const visibleCitiesAmount = 200;
 
+const popularCountries = [
+  { countryName: "United Kingdom", countryCode: "GB", isoNumeric: "826" },
+  { countryName: "Germany", countryCode: "DE", isoNumeric: "276" },
+  { countryName: "France", countryCode: "FR", isoNumeric: "250" },
+];
+
+const parcelOptions = [
+  {
+    title: "Envelope",
+    size: "42x36x5 cm, up to 2 kg",
+    description: "Small items: documents, jewelry, accessories",
+    img: <EnvelopeImg />,
+  },
+  {
+    title: "Box S",
+    size: "33x25x15 cm, up to 5 kg",
+    description: "A little more than a shoebox",
+    img: <BoxImg />,
+  },
+  {
+    title: "Box M",
+    size: "31x25x38 cm, up to 12 kg",
+    description: "Like a microwave box",
+    img: <BoxImg />,
+  },
+  {
+    title: "Box L",
+    size: "60x35x30 cm, up to 18 kg",
+    description: "For equipment, spare parts, tools",
+    img: <BoxImg />,
+  },
+  {
+    title: "Pallet",
+    size: "120x120x80 cm, up to 200 kg",
+    description: "Large cargo: large household appliances, home library",
+    img: <BoxPalletImg />,
+  },
+];
+
 const Calculator = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [requestIsSended, setRequestIsSended] = useState(false);
   const sectionRef = useRef();
   const isIntersecting = useIntersection(sectionRef);
-  const tags = [
-    { countryName: "United Kingdom", countryCode: "GB", isoNumeric: "826" },
-    { countryName: "Germany", countryCode: "DE", isoNumeric: "276" },
-    { countryName: "France", countryCode: "FR", isoNumeric: "250" },
-  ];
-  const selectData = [
-    {
-      title: "Envelope",
-      size: "42x36x5 cm, up to 2 kg",
-      description: "Small items: documents, jewelry, accessories",
-      img: <EnvelopeImg />,
-    },
-    {
-      title: "Box S",
-      size: "33x25x15 cm, up to 5 kg",
-      description: "A little more than a shoebox",
-      img: <BoxImg />,
-    },
-    {
-      title: "Box M",
-      size: "31x25x38 cm, up to 12 kg",
-      description: "Like a microwave box",
-      img: <BoxImg />,
-    },
-
-    {
-      title: "Box L",
-      size: "60x35x30 cm, up to 18 kg",
-      description: "For equipment, spare parts, tools",
-      img: <BoxImg />,
-    },
-    {
-      title: "Pallet",
-      size: "120x120x80 cm, up to 200 kg",
-      description: "Large cargo: large household appliances, home library",
-      img: <BoxPalletImg />,
-    },
-  ];
   const [showEmailError, setShowEmailError] = useState(false);
   const [emailState, validateEmail] = useValidation("email");
   const { isValid: emailIsValid, errorMessage: emailErrorMessage } = emailState;
@@ -304,7 +305,7 @@ const Calculator = () => {
                 />
                 <MarkerImg className={classes["calculator__input-img"]} />
               </div>
-              <Tags tagList={tags} onClick={onTagDispatch} />
+              <Tags tagList={popularCountries} onClick={onTagDispatch} />
             </div>
             <div>
               <div className={classes["calculator__field"]}>
@@ -323,7 +324,7 @@ const Calculator = () => {
             </div>
 
             <Select
-              options={selectData}
+              options={parcelOptions}
               className={classes["calculator__select"]}
             />
             <div className={classes["calculator__direction"]}>TO</div>
@@ -340,7 +341,7 @@ const Calculator = () => {
                 />
                 <MarkerImg className={classes["calculator__input-img"]} />
               </div>
-              <Tags tagList={tags} onClick={onTagDestination} />
+              <Tags tagList={popularCountries} onClick={onTagDestination} />
             </div>
 
             <div className={classes["calculator__field"]}>
