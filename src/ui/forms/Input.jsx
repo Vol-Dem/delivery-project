@@ -1,21 +1,13 @@
 import classes from "./Input.module.scss";
 
-const Input = (props) => {
-  const {
-    id,
-    type,
-    name,
-    label,
-    input,
-    className,
-    onBlur,
-    onChange,
-    error,
-    autoFocus,
-    value,
-    readOnly,
-    placeholder,
-  } = props;
+const Input = ({
+  label,
+  className,
+  onBlur,
+  onChange,
+  error,
+  ...inputProps
+}) => {
   const onBlurEvent = (e) => {
     onBlur && onBlur(e.target.value);
   };
@@ -24,24 +16,16 @@ const Input = (props) => {
   };
 
   return (
-    <>
-      <label htmlFor={name} className={classes.label}>
-        {label || ""}
-        <input
-          id={id}
-          type={type}
-          onBlur={onBlurEvent}
-          onChange={onChangeEvent}
-          placeholder={placeholder}
-          {...input}
-          className={`${classes.input} ${className || ""}`}
-          autoFocus={autoFocus}
-          value={value}
-          readOnly={readOnly}
-        />
-        {error && <div className={classes.error}>{error}</div>}
-      </label>
-    </>
+    <label htmlFor={inputProps.name} className={classes.label}>
+      {label || ""}
+      <input
+        {...inputProps}
+        className={`${classes.input} ${className || ""}`}
+        onBlur={onBlurEvent}
+        onChange={onChangeEvent}
+      />
+      {error && <div className={classes.error}>{error}</div>}
+    </label>
   );
 };
 
