@@ -1,27 +1,30 @@
-@use "../variables/variables.scss" as var;
+@use "../../variables/variables.scss" as var;
 
 .select {
   position: relative;
   &__arrow {
     display: block;
     position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2rem;
-    height: 2rem;
-    background-color: var.$color-text-gray;
-    clip-path: polygon(0 25%, 50% 60%, 100% 25%, 100% 40%, 50% 80%, 0 40%);
-    transition: all 0.3s;
+    right: 0.2rem;
+    top: 0.4rem;
+    // transform: translateY(-50%);
+    // background-color: var.$color-text-gray;
+    color: var.$color-text-gray;
+    width: 3.6rem;
+    height: 3.6rem;
+    cursor: pointer;
+    // clip-path: polygon(0 25%, 50% 60%, 100% 25%, 100% 40%, 50% 80%, 0 40%);
+    // transition: all 0.3s;
 
-    &--open {
-      transform-origin: 50% 30%;
-      transform: rotate(180deg);
-    }
+    // &--open {
+    //   transform-origin: 50% 30%;
+    //   transform: rotate(180deg);
+    // }
   }
 
   &__input {
-    padding-left: 3.2rem;
+    padding: 1.3rem;
+    padding-left: 3.4rem;
     cursor: pointer;
   }
 
@@ -70,18 +73,22 @@
     width: 94%;
     height: 25rem;
     margin-left: 3%;
-    padding: 0 1rem 1rem;
+    padding: 0 0rem 0.6rem 1rem;
     overflow: hidden;
-    border: 1px solid var.$color-violet-dark;
+    // border: 1px solid var.$color-violet-dark;
     border-radius: 0 0 1rem 1rem;
-    transition: all 0.3s;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 0.4rem;
+    border: none;
+    // transition: all 0.3s;
 
-    &--hide {
-      background-color: transparent;
-      border-color: transparent;
-      padding: 0;
-      height: 0;
-    }
+    // &--hide {
+    //   background-color: transparent;
+    //   border-color: transparent;
+    //   padding: 0;
+    //   height: 0;
+    // }
 
     &-container {
       height: 100%;

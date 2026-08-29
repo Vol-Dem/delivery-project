@@ -20,7 +20,8 @@
     background-image: url(../../../assets/layout/city-trans2.svg);
     background-repeat: repeat-x;
     background-size: cover;
-    filter: drop-shadow(6px 3px 4px rgba(0, 0, 0, 0.3));
+    // filter: drop-shadow(6px 3px 4px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(7px 7px 3px rgba(0, 0, 0, 0.3));
     z-index: -1;
   }
 }
@@ -36,6 +37,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
+  text-align: center;
   // justify-content: space-around;
   gap: 2rem;
   // margin-top: 4rem;
@@ -111,6 +113,5 @@
     }
   }
 }
-
 
 @include mix.slideInUp;

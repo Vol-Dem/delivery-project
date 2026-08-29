@@ -6,7 +6,8 @@
   & ul {
     display: flex;
     gap: 0.8rem;
-    list-style: none;
+    // list-style: symbols("-");
+    margin-left: 2rem;
   }
 }
 

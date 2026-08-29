@@ -3,8 +3,8 @@ import useIntersection from "../../hooks/use-intersection";
 import Button from "../../../ui/Button";
 import classes from "./Cta.module.scss";
 import Modal from "../../../ui/Modal";
-import AuthForm from "../../auth/AuthForm";
 import { AnimatePresence } from "framer-motion";
+import AuthForm from "../../forms/auth/AuthForm";
 
 const Cta = () => {
   const [authIsOpen, setAuthIsOpen] = useState(false);

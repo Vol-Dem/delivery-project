@@ -345,6 +345,9 @@
       // bottom: -1%;
     }
   }
+  .form {
+    grid-template-columns: 1fr;
+  }
 }
 
 @include mix.slideInUp;

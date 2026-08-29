@@ -1,0 +1,94 @@
+@use "../../variables/variables.scss" as var;
+
+.select {
+  position: relative;
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 1.3rem;
+  padding-left: 3.4rem;
+  border: 1px solid var.$color-text-gray;
+  border-radius: 1rem;
+  color: var.$color-text-primary;
+  box-shadow: 0 0 0.4rem rgba(166, 166, 166, 0.3);
+
+  &--select {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: 1px solid blueviolet;
+  }
+  &-img {
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    stroke: blueviolet;
+    &--box {
+      fill: rgba(137, 43, 226, 0.5);
+      stroke-width: 0.1px;
+    }
+  }
+}
+.relative {
+  position: relative;
+}
+
+.button {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.4rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.arrow {
+  color: var.$color-text-gray;
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+.check {
+  width: 2rem;
+  height: 2rem;
+}
+
+.options {
+  width: var(--input-width);
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 0.4rem;
+}
+
+.option {
+  display: flex;
+  gap: 1rem;
+  padding: 0.4rem 0.8rem;
+  margin: 0.2rem 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var.$color-violet-light;
+  }
+
+  &:focus {
+    background-color: var.$color-violet-light;
+  }
+
+  &[data-focus] {
+    background-color: var.$color-violet-light;
+  }
+}
+
+.selected {
+  background-color: var.$color-gray-light;
+}
+
+.error {
+  font-size: 1.6rem;
+  color: var.$color-red;
+  margin: 0.6rem 1.4rem 0rem;
+}

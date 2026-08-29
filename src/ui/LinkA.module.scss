@@ -1,0 +1,21 @@
+@use "./../variables/variables.scss" as var;
+
+.link {
+  display: inline-block;
+  color: #7278f0;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+
+  &:hover {
+    color: lighten(#7278f0, 7%);
+  }
+
+  & svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}

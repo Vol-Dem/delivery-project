@@ -122,6 +122,12 @@
       align-items: center;
       gap: 1.5rem;
     }
+    &__info-bg {
+      width: 100%;
+    }
+    &__info-block {
+      width: 100%;
+    }
   }
   .container {
     flex-direction: column;

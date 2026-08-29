@@ -1,5 +1,28 @@
 import classes from "./FooterNavigation.module.scss";
 
+const footerNav = [
+  {
+    name: "Home",
+    id: "section-hero",
+  },
+  {
+    name: "Services",
+    id: "section-services",
+  },
+  {
+    name: "Solution",
+    id: "section-solution",
+  },
+  {
+    name: "Steps",
+    id: "section-steps",
+  },
+  {
+    name: "Contacts",
+    id: "section-contacts",
+  },
+];
+
 const FooterNavigation = () => {
   const navHandler = (e) => {
     e.preventDefault();
@@ -13,26 +36,15 @@ const FooterNavigation = () => {
   return (
     <nav onClick={navHandler} className={classes["nav-main"]}>
       <ul className={classes["nav__links"]}>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-home">
-            - Home
-          </a>
-        </li>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-services">
-            - Services
-          </a>
-        </li>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-solution">
-            - Solution
-          </a>
-        </li>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-steps">
-            - Steps
-          </a>
-        </li>
+        {footerNav.map((nav, i) => {
+          return (
+            <li key={i} className={classes["nav__item"]}>
+              <a className={classes["nav__link"]} href={`#${nav.id}`}>
+                {nav.name}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

@@ -42,3 +42,22 @@
 //     color: aqua;
 //   }
 // }
+
+.animation__slide-in {
+  animation: slideIn 1.6s ease-in-out infinite;
+  &--delay {
+    animation-delay: 0.2s;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-3.5rem);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

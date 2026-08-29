@@ -1,7 +1,7 @@
-import Button from "../../ui/Button";
-import Input from "../../ui/Input";
+import Button from "../../../ui/Button";
+import Input from "../../../ui/forms/Input";
 import classes from "./AuthForm.module.scss";
-import { useValidation } from "./../hooks/use-validation";
+import { useValidation } from "../../hooks/use-validation";
 import { useState } from "react";
 
 const AuthForm = () => {

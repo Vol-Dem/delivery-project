@@ -3,7 +3,7 @@ import classes from "./Button.module.scss";
 const Button = (props) => {
   return (
     <button
-      className={`${classes["button-submint"]} ${props.className}`}
+      className={`${classes["button-submint"]} ${props.className || ""}`}
       type={props.type || "button"}
       onClick={props.onClick}
       disabled={props.disabled}

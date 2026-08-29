@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-export const useIntersection = (ref) => {
+export const useIntersection = (ref, rootMargin = "-40") => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const observerRef = useRef(null);
 
@@ -10,7 +10,7 @@ export const useIntersection = (ref) => {
         setIsIntersecting(entry.isIntersecting);
         if (entry.isIntersecting) observerRef.current.disconnect();
       },
-      { rootMargin: "-30%" }
+      { rootMargin: `${rootMargin}%` }
     );
   }, []);
 

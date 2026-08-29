@@ -1,15 +1,17 @@
 import classes from "./Select.module.scss";
-import { ReactComponent as BoxEmptyImg } from "./../assets/layout/boxempty.svg";
-import { useRef, useState } from "react";
+import { ReactComponent as BoxEmptyImg } from "./../../assets/layout/boxempty.svg";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Input from "./Input";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { motion } from "framer-motion";
 
 const Select = ({ options, onChange, className }) => {
   const [selectIsOpen, setSelectIsOpen] = useState(false);
-  const [boxValue, setBoxValue] = useState("");
+  const [selectValue, setSelectValue] = useState("");
   const fieldRef = useRef();
 
-  const onBoxSizeChange = (e) => {
-    setBoxValue(e.target.value);
+  const onSelectChange = (e) => {
+    setSelectValue(e.target.value);
     onChange(e.target.value);
     setSelectIsOpen(false);
   };
@@ -17,6 +19,24 @@ const Select = ({ options, onChange, className }) => {
   const onShowSelect = () => {
     setSelectIsOpen((state) => !state);
   };
+
+  const closeSelectHandler = useCallback((e) => {
+    if (!e.target.classList.contains(classes["select__input"]))
+      setSelectIsOpen(false);
+  }, []);
+
+  useEffect(() => {
+    if (selectIsOpen) {
+      document.removeEventListener("click", closeSelectHandler);
+      document.addEventListener("click", closeSelectHandler);
+    } else {
+      document.removeEventListener("click", closeSelectHandler);
+    }
+
+    return () => {
+      document.removeEventListener("click", closeSelectHandler);
+    };
+  }, [selectIsOpen, closeSelectHandler]);
 
   const selectOptions = options.map((item, i) => {
     return (
@@ -48,32 +68,45 @@ const Select = ({ options, onChange, className }) => {
 
   return (
     <div className={`${classes["select"]} ${className}`} onClick={onShowSelect}>
-      <span
+      {/* <span
         className={`${classes["select__arrow"]} ${
           selectIsOpen ? classes["select__arrow--open"] : ""
         }`}
-      ></span>
+      ></span> */}
+      <motion.div
+        animate={{ rotate: selectIsOpen ? 180 : 0 }}
+        className={classes["select__arrow"]}
+      >
+        <ChevronDownIcon />
+      </motion.div>
       <Input
         className={classes["select__input"]}
         type="text"
         placeholder="Select size"
-        value={boxValue}
+        value={selectValue}
         readOnly
       />
       <BoxEmptyImg
         className={`${classes["select__icon"]} ${classes["select__icon--box"]}`}
       />
-      <fieldset
+
+      <motion.fieldset
+        variants={{
+          hidden: { opacity: 0, scale: 0.95, zIndex: -1 },
+          visible: { opacity: 1, scale: 1, zIndex: 1 },
+          exit: { opacity: 0, scale: 0.95, zIndex: -1 },
+        }}
+        initial="hidden"
+        animate={`${selectIsOpen ? "visible" : "hidden"}`}
+        exit="exit"
         ref={fieldRef}
-        className={`${classes["select__field"]} ${
-          !selectIsOpen ? classes["select__field--hide"] : ""
-        }`}
-        onChange={onBoxSizeChange}
+        className={`${classes["select__field"]} `}
+        onChange={onSelectChange}
       >
         <div className={classes["select__field-container"]}>
           {selectOptions}
         </div>
-      </fieldset>
+      </motion.fieldset>
     </div>
   );
 };

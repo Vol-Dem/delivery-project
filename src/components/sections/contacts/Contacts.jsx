@@ -6,10 +6,9 @@ import Button from "../../../ui/Button";
 import Modal from "../../../ui/Modal";
 import { useState, useRef } from "react";
 import useIntersection from "../../hooks/use-intersection";
-// import AuthForm from "../../auth/AuthForm";
 import Wrap from "../../layout/Wrap";
-import ContactForm from "../../contact-form/ContactForm";
 import { AnimatePresence } from "framer-motion";
+import ContactForm from "../../forms/contact-form/ContactForm";
 
 const Contacts = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

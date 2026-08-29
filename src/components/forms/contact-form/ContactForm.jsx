@@ -1,6 +1,7 @@
 import classes from "./ContactForm.module.scss";
-import Button from "../../ui/Button";
-import Input from "../../ui/Input";
+import Button from "../../../ui/Button";
+import Input from "../../../ui/forms/Input";
+import TermsPrivacyField from "../ui/TermsPrivacyField";
 
 const ContactForm = () => {
   return (
@@ -18,6 +19,7 @@ const ContactForm = () => {
           placeholder="Phone"
           className={classes["contact-form__input"]}
         />
+        <TermsPrivacyField />
         <Button className={classes["contact-form__btn"]}>Call Me</Button>
       </form>
     </div>

@@ -5,17 +5,17 @@ import { ReactComponent as TruckIcon } from "./../../../assets/truck.svg";
 import { ReactComponent as TreeIcon } from "./../../../assets/tree.svg";
 import { ReactComponent as WheelIcon } from "./../../../assets/wheel.svg";
 import Button from "../../../ui/Button";
-import Input from "../../../ui/Input";
+import Input from "../../../ui/forms/Input";
 import Modal from "../../../ui/Modal";
 import Tracking from "../../tracking/Tracking";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { animate, stagger } from "framer-motion";
+import { animate, stagger, motion } from "framer-motion";
 
 const Hero = () => {
   const [trackingIsOpen, setTrackingIsOpen] = useState(false);
   const [trackingNumber, setTrackingNumber] = useState("");
-
+  //
   // const openTrackingHandler = () => {
   //   setTrackingIsOpen(true);
   // };
@@ -29,7 +29,7 @@ const Hero = () => {
       animate(
         "#track",
         { rotate: [-5, 0, 5, 0] },
-        { type: "spring", duration: 0.2, delay: stagger(0.05) }
+        { type: "keyframes", duration: 0.1, repeat: 1 }
       );
     }
     if (inputValue) {
@@ -61,7 +61,6 @@ const Hero = () => {
           <span className={`${classes.speed} ${classes["speed--2"]}`}></span>
           <span className={`${classes.speed} ${classes["speed--3"]}`}></span>
           <TreeIcon className={`${classes.tree} ${classes["tree--1"]}`} />
-
           <div className={`${classes.truck} ${classes.anim}`}>
             <TruckIcon />
             <div className={`${classes.tires} ${classes["tires--1"]}`}>

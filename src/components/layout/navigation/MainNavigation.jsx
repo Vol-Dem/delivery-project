@@ -1,5 +1,28 @@
 import classes from "./MainNavigation.module.scss";
 
+const mainNav = [
+  {
+    name: "Home",
+    id: "section-hero",
+  },
+  {
+    name: "Services",
+    id: "section-services",
+  },
+  {
+    name: "Solution",
+    id: "section-solution",
+  },
+  {
+    name: "Steps",
+    id: "section-steps",
+  },
+  {
+    name: "Contacts",
+    id: "section-contacts",
+  },
+];
+
 const MainNavigation = () => {
   const navHandler = (e) => {
     e.preventDefault();
@@ -13,31 +36,15 @@ const MainNavigation = () => {
   return (
     <nav onClick={navHandler} className={classes["nav-main"]}>
       <ul className={classes["nav__links"]}>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-hero">
-            Home
-          </a>
-        </li>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-services">
-            Services
-          </a>
-        </li>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-solution">
-            Solution
-          </a>
-        </li>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-steps">
-            Steps
-          </a>
-        </li>
-        <li className={classes["nav__item"]}>
-          <a className={classes["nav__link"]} href="#section-contacts">
-            Contacts
-          </a>
-        </li>
+        {mainNav.map((nav) => {
+          return (
+            <li key={nav.id} className={classes["nav__item"]}>
+              <a className={classes["nav__link"]} href={`#${nav.id}`}>
+                {nav.name}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

@@ -1,7 +1,9 @@
-.contact-form {
+@use "./../../../variables/variables.scss" as var;
+
+.auth {
   padding: 1rem 2rem;
   &__title {
-    font-size: 3.2rem;
+    font-size: 3.8rem;
     margin-bottom: 1rem;
   }
   &__input {
@@ -19,7 +21,7 @@
     top: -5rem;
     left: 0;
     border-radius: 1rem;
-    background-image: url("./../../assets/title-box.svg");
+    background-image: url("./../../../assets/title-box.svg");
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: 105% 80%;
@@ -27,4 +29,14 @@
     filter: grayscale(0.5);
     z-index: -1;
   }
+}
+
+.invalid {
+  // background-color: lighten(var.$color-red, 60%);
+  border-color: var.$color-red;
+}
+
+.success {
+  font-size: 1.8rem;
+  font-weight: 500;
 }

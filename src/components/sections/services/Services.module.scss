@@ -33,13 +33,13 @@
     animation: slideInUp 1s ease forwards;
   }
   &-2 {
-    animation: slideInUp 1s ease forwards 0.1s;
-  }
-  &-3 {
     animation: slideInUp 1s ease forwards 0.2s;
   }
+  &-3 {
+    animation: slideInUp 1s ease forwards 0.4s;
+  }
   &-4 {
-    animation: slideInUp 1s ease forwards 0.3s;
+    animation: slideInUp 1s ease forwards 0.5s;
   }
 }
 
@@ -61,8 +61,8 @@
   .services-section {
     margin-top: 0;
     background: #fff;
-    margin-top: -15rem;
-    z-index: 5;
+    // margin-top: -15rem;
+    z-index: -1;
   }
 
   .services {
@@ -78,7 +78,7 @@
 
 @media (max-width: 600px) {
   .services-section {
-    margin-top: 0;
+    margin-top: 15rem;
   }
   .services {
     grid-template-columns: 1fr;
