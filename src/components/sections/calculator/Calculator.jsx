@@ -2,23 +2,20 @@ import classes from "./Calculator.module.scss";
 import { ReactComponent as EnvelopeImg } from "./../../../assets/box/envelope.svg";
 import { ReactComponent as BoxImg } from "./../../../assets/box/box.svg";
 import { ReactComponent as BoxPalletImg } from "./../../../assets/box/boxes-pallet.svg";
-import { ReactComponent as MarkerImg } from "./../../../assets/layout/map-marker.svg";
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import useIntersection from "../../hooks/use-intersection";
 import Button from "../../../ui/Button";
-import Tags from "../../../ui/Tags";
-import Input from "../../../ui/forms/Input";
 import Wrap from "../../layout/Wrap";
 import Select from "../../../ui/forms/Select";
 import Modal from "../../../ui/Modal";
 import { useValidation } from "../../hooks/use-validation";
 import { AnimatePresence } from "framer-motion";
-import ComboSelect from "../../../ui/forms/ComboSelect";
 import {
   API_GEONAMES_COUNTRY_INFO_URL,
   API_GEONAMES_SEARCH_URL,
 } from "../../../variables/constants";
-import TermsPrivacyField from "../../forms/ui/TermsPrivacyField";
+import { DestinationFields, DispatchFields } from "./CalculatorFields";
+import QuoteRequestForm from "./QuoteRequestForm";
 
 const visibleCitiesAmount = 200;
 
@@ -253,26 +250,6 @@ const Calculator = () => {
     setSelectedDestinationCountry(country);
   };
 
-  const calculatorForm = (
-    <>
-      <h3 className={classes["calculator__form-title"]}>
-        Fill out the form to get a quote
-      </h3>
-      <form className={classes["calculator__form"]} onSubmit={onFormSubmit}>
-        <Input
-          type="email"
-          placeholder="Email"
-          onBlur={showEmailErrorHandler}
-          error={showEmailError && emailErrorMessage}
-          autoFocus={true}
-          onChange={validateEmailOnChange}
-        />
-        <TermsPrivacyField />
-        <Button type="submit">Get a quote</Button>
-      </form>
-    </>
-  );
-
   const successful = (
     <div className={classes["calculator__successful"]}>
       Thank you! <span>We will call you back within 5 minutes</span>
@@ -291,88 +268,43 @@ const Calculator = () => {
             Calculate shipping
           </h2>
           <form onSubmit={onCalculatorSubmit} className={classes["calculator"]}>
-            <div className={classes["calculator__direction"]}>FROM</div>
-            <div>
-              <div className={classes["calculator__field"]}>
-                <ComboSelect
-                  loading={countriesIsLoading}
-                  placeholder="Dispatch country"
-                  query={dispatchCountryQuery}
-                  optionsData={filteredCountry}
-                  setQuery={setDispatchCountryQuery}
-                  selected={selectedDispatchCountry}
-                  setSelected={selectDispatchCountryHandler}
-                />
-                <MarkerImg className={classes["calculator__input-img"]} />
-              </div>
-              <Tags tagList={popularCountries} onClick={onTagDispatch} />
-            </div>
-            <div>
-              <div className={classes["calculator__field"]}>
-                <ComboSelect
-                  disabled={!Object.keys(selectedDispatchCountry).length}
-                  loading={dispatchCitiesIsLoading}
-                  placeholder="Dispatch city"
-                  query={dispatchCityQuery}
-                  optionsData={filteredDispatchCity}
-                  setQuery={setDispatchCityQuery}
-                  selected={selectedDispatchCity}
-                  setSelected={setSelectedDispatchCity}
-                />
-                <MarkerImg className={classes["calculator__input-img"]} />
-              </div>
-            </div>
+            <DispatchFields
+              countriesIsLoading={countriesIsLoading}
+              countryQuery={dispatchCountryQuery}
+              countryOptions={filteredCountry}
+              setCountryQuery={setDispatchCountryQuery}
+              selectedCountry={selectedDispatchCountry}
+              selectCountry={selectDispatchCountryHandler}
+              popularCountries={popularCountries}
+              selectPopularCountry={onTagDispatch}
+              citiesIsLoading={dispatchCitiesIsLoading}
+              cityQuery={dispatchCityQuery}
+              cityOptions={filteredDispatchCity}
+              setCityQuery={setDispatchCityQuery}
+              selectedCity={selectedDispatchCity}
+              selectCity={setSelectedDispatchCity}
+            />
 
             <Select
               options={parcelOptions}
               className={classes["calculator__select"]}
             />
-            <div className={classes["calculator__direction"]}>TO</div>
-            <div>
-              <div className={classes["calculator__field"]}>
-                <ComboSelect
-                  loading={countriesIsLoading}
-                  placeholder="Destination country"
-                  query={destinationCountryQuery}
-                  optionsData={filteredCountry}
-                  setQuery={setDestinationCountryQuery}
-                  selected={selectedDestinationCountry}
-                  setSelected={selectDestinationCountryHandler}
-                />
-                <MarkerImg className={classes["calculator__input-img"]} />
-              </div>
-              <Tags tagList={popularCountries} onClick={onTagDestination} />
-            </div>
-
-            <div className={classes["calculator__field"]}>
-              <ComboSelect
-                disabled={!Object.keys(selectedDestinationCountry).length}
-                loading={destinationCitiesIsLoading}
-                placeholder="Destination city"
-                query={destinationCityQuery}
-                optionsData={filteredDestinationCity}
-                setQuery={setDestinationCityQuery}
-                selected={selectedDestinationCity}
-                setSelected={setSelectedDestinationCity}
-              />
-              <MarkerImg className={classes["calculator__input-img"]} />
-            </div>
-            <fieldset className={classes["calculator__options"]}>
-              <input type="radio" name="delivery-type2" id="4" />
-              <label
-                className={classes["calculator__options-label"]}
-                htmlFor="4"
-              >
-                To the door
-              </label>
-              <input type="radio" name="delivery-type2" id="5" />
-              <label
-                className={classes["calculator__options-label"]}
-                htmlFor="5"
-              >
-                To pickup point
-              </label>
-            </fieldset>
+            <DestinationFields
+              countriesIsLoading={countriesIsLoading}
+              countryQuery={destinationCountryQuery}
+              countryOptions={filteredCountry}
+              setCountryQuery={setDestinationCountryQuery}
+              selectedCountry={selectedDestinationCountry}
+              selectCountry={selectDestinationCountryHandler}
+              popularCountries={popularCountries}
+              selectPopularCountry={onTagDestination}
+              citiesIsLoading={destinationCitiesIsLoading}
+              cityQuery={destinationCityQuery}
+              cityOptions={filteredDestinationCity}
+              setCityQuery={setDestinationCityQuery}
+              selectedCity={selectedDestinationCity}
+              selectCity={setSelectedDestinationCity}
+            />
             <Button className={classes["calculator__btn"]} type="submit">
               Calculate
             </Button>
@@ -382,7 +314,14 @@ const Calculator = () => {
       <AnimatePresence>
         {modalIsOpen && (
           <Modal onClose={closeModalHandler}>
-            {!requestIsSended && calculatorForm}
+            {!requestIsSended && (
+              <QuoteRequestForm
+                onSubmit={onFormSubmit}
+                onEmailBlur={showEmailErrorHandler}
+                onEmailChange={validateEmailOnChange}
+                emailError={showEmailError && emailErrorMessage}
+              />
+            )}
             {requestIsSended && successful}
           </Modal>
         )}
