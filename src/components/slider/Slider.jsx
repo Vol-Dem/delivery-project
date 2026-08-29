@@ -30,7 +30,6 @@ const Slider = ({ sliderData, className }) => {
       setTranslateMax(transMax);
       setMarginLeft(marginLeft);
       setitemWidth(itemWidth);
-      // console.log(transMax);
       setTranslate(0);
     });
     observer.observe(containerRef.current);
@@ -97,7 +96,6 @@ const Slider = ({ sliderData, className }) => {
         return [];
       }
     });
-    // console.log(visibleSlides);
     setSlideIsVisible(visibleSlides);
   }, [translate, translateIntervals]);
 

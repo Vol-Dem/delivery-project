@@ -27,7 +27,6 @@ const Footer = () => {
             <h4 className={classes["footer__title"]}>Quick Links</h4>
             <FooterNavigation />
           </div>
-          {/* <div className={classes["footer__column"]}>3</div> */}
           <div className={classes["footer__column"]}>
             <h5 className={classes["footer__title"]}>Contact info</h5>
 

@@ -13,14 +13,12 @@ const AuthForm = () => {
   const {
     isValid: emailIsValid,
     errorMessage: emailErrorMessage,
-    // inputValue: email,
   } = emailState;
 
   const [passwordState, validatePassword] = useValidation("password");
   const {
     isValid: passwordIsValid,
     errorMessage: passwordErrorMessage,
-    // inputValue: password,
   } = passwordState;
 
   const validateEmailOnChange = (value) => {

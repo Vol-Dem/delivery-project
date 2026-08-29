@@ -68,11 +68,6 @@ const Select = ({ options, onChange, className }) => {
 
   return (
     <div className={`${classes["select"]} ${className}`} onClick={onShowSelect}>
-      {/* <span
-        className={`${classes["select__arrow"]} ${
-          selectIsOpen ? classes["select__arrow--open"] : ""
-        }`}
-      ></span> */}
       <motion.div
         animate={{ rotate: selectIsOpen ? 180 : 0 }}
         className={classes["select__arrow"]}

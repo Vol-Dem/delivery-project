@@ -15,10 +15,6 @@ import { animate, stagger, motion } from "framer-motion";
 const Hero = () => {
   const [trackingIsOpen, setTrackingIsOpen] = useState(false);
   const [trackingNumber, setTrackingNumber] = useState("");
-  //
-  // const openTrackingHandler = () => {
-  //   setTrackingIsOpen(true);
-  // };
   const closeTrackingHandler = () => {
     setTrackingIsOpen(false);
   };
