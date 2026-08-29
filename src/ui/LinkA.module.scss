@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "./../variables/variables.scss" as var;
 
 .link {
@@ -11,7 +12,7 @@
   cursor: pointer;
 
   &:hover {
-    color: lighten(#7278f0, 7%);
+    color: color.adjust(#7278f0, $lightness: 7%);
   }
 
   & svg {
