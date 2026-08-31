@@ -1,28 +1,6 @@
 import { useState } from "react";
 import classes from "./MobileNavigation.module.scss";
-
-const mobileNav = [
-  {
-    name: "Home",
-    id: "section-hero",
-  },
-  {
-    name: "Services",
-    id: "section-services",
-  },
-  {
-    name: "Solution",
-    id: "section-solution",
-  },
-  {
-    name: "Steps",
-    id: "section-steps",
-  },
-  {
-    name: "Contacts",
-    id: "section-contacts",
-  },
-];
+import navigationItems from "./navigation-items";
 
 const MobileNavigation = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -31,16 +9,8 @@ const MobileNavigation = () => {
     setMenuIsOpen((prevState) => !prevState);
   };
 
-  const navHandler = (e) => {
-    e.preventDefault();
-    const link = e.target.closest(`.${classes["mobile-nav__link"]}`);
+  const navHandler = () => {
     setMenuIsOpen(false);
-
-    if (!link) {
-      return;
-    }
-    const id = link.getAttribute("href");
-    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   };
   return (
     <div
@@ -57,7 +27,7 @@ const MobileNavigation = () => {
       </button>
       <nav onClick={navHandler} className={`${classes["mobile-nav__nav"]}`}>
         <ul className={classes["mobile-nav__links"]}>
-          {mobileNav.map((nav) => {
+          {navigationItems.map((nav) => {
             return (
               <li key={nav.id} className={classes["mobile-nav__item"]}>
                 <a className={classes["mobile-nav__link"]} href={`#${nav.id}`}>
