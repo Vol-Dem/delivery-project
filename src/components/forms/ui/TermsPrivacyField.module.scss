@@ -1,4 +1,11 @@
 .tos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   font-size: 1.4rem;
   margin-top: 1rem;
+}
+
+.copy label {
+  cursor: pointer;
 }

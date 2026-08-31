@@ -9,25 +9,19 @@ const TermsPrivacyField = ({ checked, onChange }) => {
         id="agreement"
         name="agreement"
         checked={checked}
-        label={
-          <span>
-            I have read and agree to the{" "}
-            <LinkA href="#" className={classes.link} to="tos" target="blank">
-              Terms of Service
-            </LinkA>{" "}
-            and{" "}
-            <LinkA
-              href="#"
-              className={classes.link}
-              to="privacy"
-              target="blank"
-            >
-              Privacy Policy
-            </LinkA>
-          </span>
-        }
+        aria-labelledby="agreement-copy"
         onChange={onChange}
       />
+      <span id="agreement-copy" className={classes.copy}>
+        <label htmlFor="agreement">I have read and agree to the</label>{" "}
+        <LinkA href="#" className={classes.link} to="tos" target="blank">
+          Terms of Service
+        </LinkA>{" "}
+        <label htmlFor="agreement">and</label>{" "}
+        <LinkA href="#" className={classes.link} to="privacy" target="blank">
+          Privacy Policy
+        </LinkA>
+      </span>
     </div>
   );
 };
