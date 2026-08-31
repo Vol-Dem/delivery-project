@@ -44,4 +44,15 @@ describe("Select", () => {
     expect(onChange).toHaveBeenCalledWith("Envelope");
     expect(screen.getByRole("button", { name: "Envelope" })).toBeTruthy();
   });
+
+  it("keeps document scrolling enabled while options are open", async () => {
+    const user = userEvent.setup();
+    render(<Select options={options} />);
+
+    await user.click(screen.getByRole("button", { name: "Select size" }));
+
+    expect(screen.getByRole("listbox")).toBeTruthy();
+    expect(document.documentElement.style.overflow).toBe("");
+    expect(document.documentElement.style.paddingRight).toBe("");
+  });
 });

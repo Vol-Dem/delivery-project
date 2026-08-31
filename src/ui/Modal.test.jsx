@@ -32,6 +32,8 @@ describe("Modal", () => {
 
     const dialog = screen.getByRole("dialog", { name: "Test dialog" });
     expect(document.body.contains(dialog)).toBe(true);
+    expect(document.documentElement.style.overflow).toBe("");
+    expect(document.documentElement.style.paddingRight).toBe("");
 
     await user.click(screen.getByRole("button", { name: "Close dialog" }));
     await waitFor(() => {

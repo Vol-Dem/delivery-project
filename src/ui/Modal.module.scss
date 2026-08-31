@@ -1,3 +1,11 @@
+.modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
 .modal {
   position: fixed;
   top: 50%;
@@ -9,6 +17,8 @@
   &--backdrop {
     width: 100%;
     height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background-color: rgba(0, 3, 26, 0.8);
     backdrop-filter: blur(10px);
     cursor: pointer;
@@ -18,6 +28,10 @@
     background-color: #fff;
     border-radius: 1rem;
     width: 38rem;
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   &__close {

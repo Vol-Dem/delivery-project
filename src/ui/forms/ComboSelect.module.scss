@@ -56,6 +56,9 @@
 
 .options {
   width: var(--input-width);
+  max-height: 25rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background-color: #fff;
   border-radius: 10px;
   margin-top: 0.4rem;

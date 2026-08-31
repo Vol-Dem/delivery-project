@@ -46,6 +46,7 @@ const Select = ({ options, onChange, className }) => {
             {open && (
               <ListboxOptions
                 static
+                modal={false}
                 as={motion.div}
                 initial={{ opacity: 0, scale: 0.95, zIndex: -1 }}
                 animate={{ opacity: 1, scale: 1, zIndex: 1 }}
