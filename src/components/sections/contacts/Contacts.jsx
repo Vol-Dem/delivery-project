@@ -73,7 +73,7 @@ const Contacts = () => {
         </div>
         <AnimatePresence>
           {modalIsOpen && (
-            <Modal onClose={closeModalHandler}>
+            <Modal ariaLabel="Request a callback" onClose={closeModalHandler}>
               <ContactForm />
             </Modal>
           )}

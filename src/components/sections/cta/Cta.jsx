@@ -38,7 +38,7 @@ const Cta = () => {
       </div>
       <AnimatePresence>
         {authIsOpen && (
-          <Modal onClose={closeAuthForm}>
+          <Modal ariaLabel="Login" onClose={closeAuthForm}>
             <AuthForm />
           </Modal>
         )}

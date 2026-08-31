@@ -120,7 +120,7 @@ const Calculator = () => {
       </Wrap>
       <AnimatePresence>
         {quote.isOpen && (
-          <Modal onClose={quote.close}>
+          <Modal ariaLabel="Shipping quote" onClose={quote.close}>
             {!quote.isSent && (
               <QuoteRequestForm
                 onSubmit={quote.submit}

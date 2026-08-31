@@ -77,7 +77,7 @@ const Hero = () => {
       </div>
       <AnimatePresence>
         {trackingIsOpen && (
-          <Modal onClose={closeTrackingHandler}>
+          <Modal ariaLabel="Delivery tracking" onClose={closeTrackingHandler}>
             <Tracking trackingNumber={trackingNumber} />
           </Modal>
         )}
