@@ -9,8 +9,7 @@ import Input from "../../../ui/forms/Input";
 import Modal from "../../../ui/Modal";
 import Tracking from "../../tracking/Tracking";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { animate, stagger, motion } from "framer-motion";
+import { AnimatePresence, animate } from "framer-motion";
 
 const Hero = () => {
   const [trackingIsOpen, setTrackingIsOpen] = useState(false);

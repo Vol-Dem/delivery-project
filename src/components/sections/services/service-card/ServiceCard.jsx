@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "./ServiceCard.module.scss";
 
 const ServiceCard = ({ image, title, text, className }) => {

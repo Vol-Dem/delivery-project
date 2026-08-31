@@ -4,12 +4,6 @@ import { ReactComponent as LogoImg } from "./../../../assets/logo.svg";
 import MainNavigation from "../navigation/MainNavigation";
 import MobileNavigation from "../navigation/MobileNavigation";
 
-import React from "react";
-
-const stickyNav = () => {
-  return <div>Header</div>;
-};
-
 const Header = () => {
   const [sticky, setSticky] = useState(false);
 
