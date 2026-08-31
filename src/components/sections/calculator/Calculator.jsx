@@ -10,10 +10,7 @@ import Select from "../../../ui/forms/Select";
 import Modal from "../../../ui/Modal";
 import { useValidation } from "../../hooks/use-validation";
 import { AnimatePresence } from "framer-motion";
-import {
-  API_GEONAMES_COUNTRY_INFO_URL,
-  API_GEONAMES_SEARCH_URL,
-} from "../../../variables/constants";
+import { getCities, getCountries } from "../../../api/geonames";
 import { DestinationFields, DispatchFields } from "./CalculatorFields";
 import QuoteRequestForm from "./QuoteRequestForm";
 
@@ -92,11 +89,8 @@ const Calculator = () => {
     const getInfo = async () => {
       try {
         setCountriesIsLoading(true);
-        const resp = await fetch(
-          `${API_GEONAMES_COUNTRY_INFO_URL}?username=${import.meta.env.VITE_GEONAMES_USERNAME}`
-        );
-        const data = await resp.json();
-        setCountriesData(data.geonames);
+        const countries = await getCountries();
+        setCountriesData(countries);
         setCountriesIsLoading(false);
       } catch (err) {
         console.log(err.message);
@@ -147,11 +141,8 @@ const Calculator = () => {
   const getCitiesInfo = useCallback(
     async (countryCode, setCities, setLoading) => {
       setLoading(true);
-      const resp = await fetch(
-        `${API_GEONAMES_SEARCH_URL}?country=${countryCode}&featureClass=P&maxRows=1000&username=${import.meta.env.VITE_GEONAMES_USERNAME}`
-      );
-      const data = await resp.json();
-      setCities(data.geonames);
+      const cities = await getCities(countryCode);
+      setCities(cities);
       setLoading(false);
     },
     []
