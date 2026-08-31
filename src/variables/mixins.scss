@@ -37,7 +37,7 @@
     background-image: url(../../../assets/layout/city-trans2.svg);
     background-repeat: repeat-x;
     background-size: cover;
-    filter: drop-shadow(6px 3px 4px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(6px 3px 4px rgba(var.$color-black, 0.3));
     z-index: -1;
   }
 }
@@ -53,7 +53,7 @@
     background-image: url(../../../assets/layout/city-trans.svg);
     background-repeat: repeat-x;
     background-size: cover;
-    filter: drop-shadow(6px 3px 4px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(6px 3px 4px rgba(var.$color-black, 0.3));
     z-index: -1;
   }
 }

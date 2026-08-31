@@ -91,7 +91,7 @@
     // background-color: rgb(255, 255, 255);
     border-radius: 50%;
     padding: 0.7rem;
-    box-shadow: 0 0px 2rem 0.5rem rgba(30, 17, 127, 0.2);
+    box-shadow: 0 0px 2rem 0.5rem rgba(var.$color-shadow-blue, 0.2);
     fill: var.$color-primary;
   }
 

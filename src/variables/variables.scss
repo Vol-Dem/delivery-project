@@ -1,4 +1,5 @@
 $font-family-primary: "Raleway", sans-serif;
+$color-black: #000;
 $color-primary: #0037ba;
 $color-secondary: #eacc48;
 $color-tertiary: #c2005e;
@@ -16,7 +17,59 @@ $color-text-dark: #2a1976;
 $color-text-white: #fff;
 $color-text-gray: #acacac;
 $color-input-placeholder: #757575;
+$color-border-muted: #ccc;
+$color-disabled-background: #b1b1b1;
+$color-checkbox-background: #c6c6c6;
+$color-checkbox-foreground: #2c2c2c;
+$color-slider-track: #eaeaea;
+$color-modal-backdrop: #00031a;
+$color-modal-close: #a8a8a8;
+$color-tag-text: #373f61;
+$color-tag-hover: #76007e;
+$color-link: #7278f0;
+$color-calculator-option: #211657;
+$color-shadow-gray: #a6a6a6;
+$color-shadow-dark: #202020;
+$color-shadow-blue: #1e117f;
+$color-shadow-warm: #160000;
+$color-cloud: #434343;
+$color-illustration-gray: #464849;
+$color-illustration-dark: #343b3a;
+$color-illustration-deep: #17201f;
+$color-illustration-muted: #7a7a7a;
+$color-step-icon-dark: #1c53de;
+$color-step-icon-light: #00c3ef;
 $color-background-gray: #f6f9ff;
 $color-background-gray-light: #fafafa;
-$gradient-main-top-dark: linear-gradient(to top, #c2005e, #0037ba);
-$drop-shadow: drop-shadow(2px 3px 5px rgba(22, 0, 0, 0.1));
+$gradient-main-top-dark: linear-gradient(to top, $color-tertiary, $color-primary);
+$gradient-about-accent: linear-gradient(
+  140deg,
+  transparent 0%,
+  transparent 50%,
+  $color-violet-dark 50%
+);
+$gradient-step-blue: linear-gradient(to top, #2196f3, #1d3def);
+$gradient-hero-night: linear-gradient(
+  0deg,
+  hsl(240deg 100% 20%) 1%,
+  hsl(308deg 100% 24%) 40%,
+  hsl(331deg 100% 38%) 48%,
+  hsl(355deg 89% 58%) 51%,
+  hsl(26deg 100% 56%) 51%,
+  hsl(47deg 100% 50%) 50%,
+  hsl(48deg 100% 50%) 50%,
+  hsl(32deg 100% 50%) 49%,
+  hsl(344deg 100% 50%) 49%,
+  hsl(329deg 100% 50%) 52%,
+  hsl(308deg 100% 44%) 60%,
+  hsl(244deg 100% 50%) 99%
+);
+$gradient-hero-day: linear-gradient(
+  0deg,
+  hsl(240deg 78.33% 48.65%) 1%,
+  #2196f3 40%,
+  #00d4ef 51%,
+  #00e2ff 50%,
+  hsl(230.85deg 87.02% 52.63%) 99%
+);
+$drop-shadow: drop-shadow(2px 3px 5px rgba($color-shadow-warm, 0.1));

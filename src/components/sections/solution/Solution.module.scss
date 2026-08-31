@@ -84,7 +84,7 @@
 
 .solution-image {
   width: 45%;
-  filter: drop-shadow(2px 3px 5px rgba(22, 0, 0, 0.1));
+  filter: var.$drop-shadow;
   flex-shrink: 0;
   opacity: 0;
 

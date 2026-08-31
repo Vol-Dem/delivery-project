@@ -21,7 +21,7 @@
   &__pagination {
     height: 0.3rem;
     width: 100%;
-    background-color: rgb(234, 234, 234);
+    background-color: var.$color-slider-track;
     transition: all 0.3s;
     &--active {
       background-color: var.$color-primary;
@@ -33,7 +33,7 @@
     position: relative;
     width: 4rem;
     height: 4rem;
-    background-color: #fff;
+    background-color: var.$color-white;
     border: 3px solid var.$color-primary;
     border-radius: 50%;
     flex-shrink: 0;
@@ -99,9 +99,9 @@
     padding: 2rem;
     min-width: 12rem;
     border-radius: 1rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 1rem rgba(var.$color-black, 0.1);
     margin: 1rem 0;
-    background-color: #fff;
+    background-color: var.$color-white;
   }
   &__img svg {
     width: 5rem;

@@ -9,7 +9,7 @@
   padding: 1.6rem 3rem;
   border-radius: 0.8rem;
   text-transform: uppercase;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1rem rgba(var.$color-black, 0.2);
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s;
@@ -24,8 +24,8 @@
 
   &:disabled {
     transform: translateY(1px);
-    background-color: #b1b1b1;
-    box-shadow: 0 0 1rem 0rem rgb(172, 172, 172);
+    background-color: var.$color-disabled-background;
+    box-shadow: 0 0 1rem 0rem var.$color-text-gray;
     cursor: not-allowed;
   }
 }

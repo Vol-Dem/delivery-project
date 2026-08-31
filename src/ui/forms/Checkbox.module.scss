@@ -2,12 +2,12 @@
 @use "./../../variables/variables.scss" as var;
 
 .checkbox {
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(var.$color-white, 0.3);
   appearance: none;
   // background-color: var.$color-background-light;
   // background-color: var.$color-input-bg;
-  background-color: #c6c6c6;
-  color: #2c2c2c;
+  background-color: var.$color-checkbox-background;
+  color: var.$color-checkbox-foreground;
   width: 1.8rem;
   height: 1.8rem;
   margin-left: 0.4rem;

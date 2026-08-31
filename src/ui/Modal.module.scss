@@ -1,3 +1,5 @@
+@use "../variables/variables.scss" as var;
+
 .modal-root {
   position: fixed;
   inset: 0;
@@ -19,13 +21,13 @@
     height: 100vh;
     overflow-y: auto;
     overscroll-behavior: contain;
-    background-color: rgba(0, 3, 26, 0.8);
+    background-color: rgba(var.$color-modal-backdrop, 0.8);
     backdrop-filter: blur(10px);
     cursor: pointer;
   }
   &--content {
     padding: 3.5rem 2.5rem;
-    background-color: #fff;
+    background-color: var.$color-white;
     border-radius: 1rem;
     width: 38rem;
     max-height: calc(100vh - 2rem);
@@ -48,7 +50,7 @@
     display: inline-block;
     width: 1.5rem;
     height: 1.5rem;
-    background-color: rgb(168, 168, 168);
+    background-color: var.$color-modal-close;
     clip-path: polygon(
       10% 0,
       0 10%,

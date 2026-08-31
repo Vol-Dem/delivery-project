@@ -55,12 +55,7 @@
     &-bg {
       padding: 0.2rem;
       border-radius: 0.8rem;
-      background: linear-gradient(
-        140deg,
-        transparent 0%,
-        transparent 50%,
-        blueviolet 50%
-      );
+      background: var.$gradient-about-accent;
       background-size: 250%;
 
       transition: all 0.4s;
@@ -80,7 +75,7 @@
       height: 8rem;
       border-radius: 0.8rem;
       color: var.$color-text-white;
-      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 1rem rgba(var.$color-black, 0.1);
       transition: all 0.3s;
 
       &--1 {

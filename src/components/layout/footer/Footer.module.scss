@@ -6,7 +6,7 @@
 }
 .footer {
   position: relative;
-  color: #fff;
+  color: var.$color-text-white;
   @include mix.bg-gradient-dotted;
   background-position: 0 61%;
   padding: 5rem 4rem 4rem;
@@ -23,7 +23,7 @@
     background-image: url(../../../assets/layout/city-trans2.svg);
     background-repeat: repeat-x;
     background-size: cover;
-    filter: drop-shadow(6px 3px 4px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(6px 3px 4px rgba(var.$color-black, 0.3));
     z-index: -1;
   }
 
@@ -67,10 +67,10 @@
     width: 3.5rem;
     height: 3.5rem;
     padding: 0.4rem;
-    fill: #fff;
+    fill: var.$color-white;
     background-color: var.$color-primary;
     border-radius: 50%;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1rem rgba(var.$color-black, 0.2);
   }
   &__copy {
     font-size: 1.2rem;

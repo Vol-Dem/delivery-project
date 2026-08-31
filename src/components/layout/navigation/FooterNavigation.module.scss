@@ -24,6 +24,6 @@
   transition: all 0.2s;
 
   &:hover {
-    text-shadow: 0 0 1rem #fff;
+    text-shadow: 0 0 1rem var.$color-white;
   }
 }

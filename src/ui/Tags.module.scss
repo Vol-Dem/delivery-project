@@ -1,15 +1,17 @@
+@use "../variables/variables.scss" as var;
+
 .tags {
   display: flex;
   gap: 1rem;
   margin-left: 1rem;
   font-size: 1.4rem;
-  color: #373f61;
+  color: var.$color-tag-text;
   margin-top: 0.5rem;
 
   &__item {
     padding: 0;
     border: 0;
-    border-bottom: 1px solid #373f61;
+    border-bottom: 1px solid var.$color-tag-text;
     background: transparent;
     color: inherit;
     font: inherit;
@@ -17,8 +19,8 @@
     transition: all 0.3s;
 
     &:hover {
-      color: #76007e;
-      border-color: #76007e;
+      color: var.$color-tag-hover;
+      border-color: var.$color-tag-hover;
     }
   }
 }

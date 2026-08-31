@@ -3,7 +3,7 @@
 
 .link {
   display: inline-block;
-  color: #7278f0;
+  color: var.$color-link;
   text-decoration: none;
   transition: all 0.3s;
   display: inline-flex;
@@ -12,7 +12,7 @@
   cursor: pointer;
 
   &:hover {
-    color: color.adjust(#7278f0, $lightness: 7%);
+    color: color.adjust(var.$color-link, $lightness: 7%);
   }
 
   & svg {

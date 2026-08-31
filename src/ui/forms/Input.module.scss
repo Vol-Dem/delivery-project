@@ -11,7 +11,7 @@
     cursor: pointer;
   }
   &:focus {
-    outline: 1px solid blueviolet;
+    outline: 1px solid var.$color-violet-dark;
   }
   &-img {
     position: absolute;
@@ -19,9 +19,9 @@
     left: 0.5rem;
     transform: translateY(-50%);
     width: 2.5rem;
-    stroke: blueviolet;
+    stroke: var.$color-violet-dark;
     &--box {
-      fill: rgba(137, 43, 226, 0.5);
+      fill: rgba(var.$color-violet-dark, 0.5);
       stroke-width: 0.1px;
     }
   }

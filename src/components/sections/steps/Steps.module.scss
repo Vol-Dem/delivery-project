@@ -36,11 +36,11 @@
     max-width: 28rem;
     border-radius: 1rem;
     background-color: var.$color-white;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 1rem rgba(var.$color-black, 0.1);
     transition: box-shadow 0.1s ease-in;
 
     &:hover {
-      box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 2rem rgba(var.$color-black, 0.2);
     }
 
     &::before {
@@ -73,7 +73,7 @@
 
     &--blue {
       color: var.$color-white;
-      background: linear-gradient(to top, #2196f3, #1d3def);
+      background: var.$gradient-step-blue;
       justify-self: right;
       &::before {
         content: "";
@@ -106,7 +106,7 @@
       transform: translateX(-62%);
       stroke: var.$color-white;
       z-index: 222;
-      filter: drop-shadow(4px 6px 4px rgba(22, 0, 0, 0.2));
+      filter: drop-shadow(4px 6px 4px rgba(var.$color-shadow-warm, 0.2));
     }
     &--big {
       position: absolute;
@@ -116,13 +116,13 @@
       transform: translateX(-47%);
       stroke: var.$color-white;
       z-index: 222;
-      filter: drop-shadow(4px 6px 4px rgba(22, 0, 0, 0.2));
+      filter: drop-shadow(4px 6px 4px rgba(var.$color-shadow-warm, 0.2));
     }
     &--dark {
-      fill: #1c53de;
+      fill: var.$color-step-icon-dark;
     }
     &--light {
-      fill: #00c3ef;
+      fill: var.$color-step-icon-light;
     }
   }
   &__title {
