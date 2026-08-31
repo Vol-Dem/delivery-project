@@ -17,14 +17,14 @@ const useCalculator = () => {
   const [emailState, validateEmail] = useValidation("email");
   const [dispatchCountryQuery, setDispatchCountryQuery] = useState("");
   const [dispatchCityQuery, setDispatchCityQuery] = useState("");
-  const [selectedDispatchCountry, setSelectedDispatchCountry] = useState({});
-  const [selectedDispatchCity, setSelectedDispatchCity] = useState({});
+  const [selectedDispatchCountry, setSelectedDispatchCountry] = useState(null);
+  const [selectedDispatchCity, setSelectedDispatchCity] = useState(null);
   const [destinationCountryQuery, setDestinationCountryQuery] = useState("");
   const [destinationCityQuery, setDestinationCityQuery] = useState("");
   const [selectedDestinationCountry, setSelectedDestinationCountry] = useState(
-    {},
+    null,
   );
-  const [selectedDestinationCity, setSelectedDestinationCity] = useState({});
+  const [selectedDestinationCity, setSelectedDestinationCity] = useState(null);
   const [countriesIsLoading, setCountriesIsLoading] = useState(false);
   const [dispatchCitiesIsLoading, setDispatchCitiesIsLoading] =
     useState(false);
@@ -52,7 +52,7 @@ const useCalculator = () => {
     loadCountries();
   }, []);
 
-  const filteredCountries = useMemo(() => {
+  const filteredDispatchCountries = useMemo(() => {
     return dispatchCountryQuery === ""
       ? countriesData
       : countriesData.filter((country) =>
@@ -62,8 +62,18 @@ const useCalculator = () => {
         );
   }, [dispatchCountryQuery, countriesData]);
 
+  const filteredDestinationCountries = useMemo(() => {
+    return destinationCountryQuery === ""
+      ? countriesData
+      : countriesData.filter((country) =>
+          country.countryName
+            .toLowerCase()
+            .includes(destinationCountryQuery.toLowerCase()),
+        );
+  }, [destinationCountryQuery, countriesData]);
+
   const filteredDispatchCities = useMemo(() => {
-    return selectedDispatchCountry === ""
+    return !selectedDispatchCountry?.countryCode
       ? []
       : citiesOfDispatchCountry
           .filter((city) =>
@@ -73,7 +83,7 @@ const useCalculator = () => {
   }, [selectedDispatchCountry, dispatchCityQuery, citiesOfDispatchCountry]);
 
   const filteredDestinationCities = useMemo(() => {
-    return selectedDestinationCountry === ""
+    return !selectedDestinationCountry?.countryCode
       ? []
       : citiesOfDestinationCountry
           .filter((city) =>
@@ -123,13 +133,15 @@ const useCalculator = () => {
 
   const selectDispatchCountry = (country) => {
     setDispatchCityQuery("");
-    setSelectedDispatchCity({});
+    setSelectedDispatchCity(null);
+    setCitiesOfDispatchCountry([]);
     setSelectedDispatchCountry(country);
   };
 
   const selectDestinationCountry = (country) => {
     setDestinationCityQuery("");
-    setSelectedDestinationCity({});
+    setSelectedDestinationCity(null);
+    setCitiesOfDestinationCountry([]);
     setSelectedDestinationCountry(country);
   };
 
@@ -181,7 +193,7 @@ const useCalculator = () => {
     dispatch: {
       country: {
         query: dispatchCountryQuery,
-        options: filteredCountries,
+        options: filteredDispatchCountries,
         selected: selectedDispatchCountry,
         setQuery: setDispatchCountryQuery,
         select: selectDispatchCountry,
@@ -199,7 +211,7 @@ const useCalculator = () => {
     destination: {
       country: {
         query: destinationCountryQuery,
-        options: filteredCountries,
+        options: filteredDestinationCountries,
         selected: selectedDestinationCountry,
         setQuery: setDestinationCountryQuery,
         select: selectDestinationCountry,

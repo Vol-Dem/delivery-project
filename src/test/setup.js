@@ -33,6 +33,11 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
+Object.defineProperty(Element.prototype, "getAnimations", {
+  configurable: true,
+  value: vi.fn(() => []),
+});
+
 beforeEach(() => {
   vi.stubGlobal(
     "fetch",

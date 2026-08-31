@@ -25,7 +25,7 @@ afterEach(() => {
 });
 
 describe("useCalculator", () => {
-  it("loads countries and derives filtered options", async () => {
+  it("loads countries and filters each direction independently", async () => {
     const { result } = renderHook(() => useCalculator());
 
     await waitFor(() => {
@@ -33,8 +33,13 @@ describe("useCalculator", () => {
       expect(result.current.dispatch.country.options).toEqual(countries);
     });
 
-    act(() => result.current.dispatch.country.setQuery("ger"));
+    act(() => {
+      result.current.dispatch.country.setQuery("ger");
+      result.current.destination.country.setQuery("fra");
+    });
+
     expect(result.current.dispatch.country.options).toEqual([countries[0]]);
+    expect(result.current.destination.country.options).toEqual([countries[1]]);
   });
 
   it("loads cities and resets the previous city when a country changes", async () => {
@@ -48,12 +53,27 @@ describe("useCalculator", () => {
     });
 
     expect(result.current.dispatch.city.query).toBe("");
-    expect(result.current.dispatch.city.selected).toEqual({});
+    expect(result.current.dispatch.city.selected).toBeNull();
     await waitFor(() => {
       expect(getCities).toHaveBeenCalledWith("DE");
       expect(result.current.dispatch.city.options).toEqual(cities);
       expect(result.current.dispatch.city.isLoading).toBe(false);
     });
+  });
+
+  it("clears dependent city state when a country is cleared", async () => {
+    const { result } = renderHook(() => useCalculator());
+
+    act(() => result.current.dispatch.country.select(countries[0]));
+    await waitFor(() => {
+      expect(result.current.dispatch.city.options).toEqual(cities);
+    });
+
+    act(() => result.current.dispatch.country.select(null));
+
+    expect(result.current.dispatch.country.selected).toBeNull();
+    expect(result.current.dispatch.city.selected).toBeNull();
+    expect(result.current.dispatch.city.options).toEqual([]);
   });
 
   it("contains city request failures and clears the loading state", async () => {

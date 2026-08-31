@@ -39,7 +39,7 @@ export const DispatchFields = ({
     <div>
       <div className={classes["calculator__field"]}>
         <ComboSelect
-          disabled={!Object.keys(selectedCountry).length}
+          disabled={!selectedCountry?.countryCode}
           loading={citiesIsLoading}
           placeholder="Dispatch city"
           query={cityQuery}
@@ -89,7 +89,7 @@ export const DestinationFields = ({
     </div>
     <div className={classes["calculator__field"]}>
       <ComboSelect
-        disabled={!Object.keys(selectedCountry).length}
+        disabled={!selectedCountry?.countryCode}
         loading={citiesIsLoading}
         placeholder="Destination city"
         query={cityQuery}

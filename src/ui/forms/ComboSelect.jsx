@@ -8,6 +8,32 @@ import {
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
 import classes from "./ComboSelect.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+
+const optionsBatchSize = 40;
+const scrollEndThreshold = 8;
+
+const optionsMatch = (option, selectedOption) => {
+  if (option == null || selectedOption == null) {
+    return option === selectedOption;
+  }
+
+  if (option.name != null || selectedOption.name != null) {
+    return option.geonameId != null && selectedOption.geonameId != null
+      ? option.geonameId === selectedOption.geonameId
+      : option === selectedOption;
+  }
+
+  if (option.countryCode != null && selectedOption.countryCode != null) {
+    return option.countryCode === selectedOption.countryCode;
+  }
+
+  if (option.isoNumeric != null && selectedOption.isoNumeric != null) {
+    return option.isoNumeric === selectedOption.isoNumeric;
+  }
+
+  return option === selectedOption;
+};
 
 const ComboSelect = ({
   optionsData,
@@ -18,15 +44,44 @@ const ComboSelect = ({
   loading,
   disabled,
 }) => {
+  const [visibleOptionsAmount, setVisibleOptionsAmount] =
+    useState(optionsBatchSize);
   const conditionalPlaceholder = !loading ? placeholder : "Loading...";
   const selectOptionHandler = (value) => setSelected(value);
-  const closeOptionsHandler = () => setQuery("");
-  const queryChangeHandler = (event) => setQuery(event.target.value);
+  const resetVisibleOptions = () => setVisibleOptionsAmount(optionsBatchSize);
+  const clearQueryHandler = () => setQuery("");
+  const closeOptionsHandler = () => {
+    clearQueryHandler();
+    resetVisibleOptions();
+  };
+  const queryChangeHandler = (event) => {
+    resetVisibleOptions();
+    setQuery(event.target.value);
+  };
+  const loadMoreOptions = (event) => {
+    const { clientHeight, scrollHeight, scrollTop } = event.currentTarget;
+    const distanceFromEnd = scrollHeight - scrollTop - clientHeight;
+
+    if (distanceFromEnd <= scrollEndThreshold) {
+      setVisibleOptionsAmount((currentAmount) =>
+        Math.min(currentAmount + optionsBatchSize, optionsData.length),
+      );
+    }
+  };
+  const visibleOptions = useMemo(
+    () => optionsData.slice(0, visibleOptionsAmount),
+    [optionsData, visibleOptionsAmount],
+  );
+
+  useEffect(() => {
+    setVisibleOptionsAmount(optionsBatchSize);
+  }, [optionsData]);
 
   return (
     <div>
       <Combobox
         immediate
+        by={optionsMatch}
         value={selected}
         onChange={selectOptionHandler}
         onClose={closeOptionsHandler}
@@ -67,29 +122,27 @@ const ComboSelect = ({
                   anchor="bottom"
                   transition
                   className={classes.options}
-                  onAnimationComplete={closeOptionsHandler}
+                  onAnimationComplete={clearQueryHandler}
+                  onScroll={loadMoreOptions}
                 >
-                  {optionsData.map((option, index) => {
-                    const optionMatchesByName =
-                      option?.name && option.name === selected?.name;
-                    const optionMatchesCountryName =
-                      option?.countryName &&
-                      option.countryName === selected?.name;
-                    const selectedClass =
-                      optionMatchesByName || optionMatchesCountryName
-                        ? classes.selected
-                        : "";
+                  {visibleOptions.map((option, index) => {
+                    const optionMatchesSelection = optionsMatch(
+                      option,
+                      selected,
+                    );
+                    const selectedClass = optionMatchesSelection
+                      ? classes.selected
+                      : "";
 
                     return (
                       <ComboboxOption
-                        key={option?.isoNumeric || index}
+                        key={option?.isoNumeric || option?.geonameId || index}
                         value={option}
                         className={`${classes.option} ${selectedClass}`}
                       >
-                        {optionMatchesByName ||
-                          (optionMatchesCountryName && (
-                            <CheckIcon className={classes.check} />
-                          ))}
+                        {optionMatchesSelection && (
+                          <CheckIcon className={classes.check} />
+                        )}
                         <div>{option?.name || option?.countryName}</div>
                       </ComboboxOption>
                     );
