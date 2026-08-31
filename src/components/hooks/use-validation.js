@@ -1,25 +1,5 @@
-import { useCallback } from "react";
-import { useReducer } from "react";
-
-const defaultState = {
-  inputValue: "",
-  isValid: false,
-  errorMessage: "",
-};
-
-const validationReducer = (state, action) => {
-  if (action.type === "email") {
-    const isValid = action.value.split("").includes("@");
-    const errorMessage = isValid ? "" : "Email must includes @";
-    return { inputValue: action.value, isValid, errorMessage };
-  }
-  if (action.type === "password") {
-    const isValid = action.value.length >= 6;
-    const errorMessage = isValid ? "" : "Password needs to be 6+ characters";
-    return { inputValue: action.value, isValid, errorMessage };
-  }
-  return state;
-};
+import { useCallback, useState } from "react";
+import { validateInput } from "../forms/validation";
 
 /**
  * Validate input data
@@ -27,14 +7,12 @@ const validationReducer = (state, action) => {
  * @returns {Array} - Returns array with a state object {inputValue,isValid,errorMessage}, and a function to pass value.
  */
 export const useValidation = (type) => {
-  const [state, dispatch] = useReducer(validationReducer, defaultState);
+  const [inputValue, setInputValue] = useState("");
+  const validation = validateInput(type, inputValue);
 
-  const validate = useCallback(
-    (value) => {
-      dispatch({ type: type, value: value });
-    },
-    [dispatch, type]
-  );
+  const validate = useCallback((value) => {
+    setInputValue(value);
+  }, []);
 
-  return [state, validate];
+  return [{ inputValue, ...validation }, validate];
 };

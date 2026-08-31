@@ -65,7 +65,7 @@ const Calculator = () => {
   const isIntersecting = useIntersection(sectionRef);
   const [showEmailError, setShowEmailError] = useState(false);
   const [emailState, validateEmail] = useValidation("email");
-  const { isValid: emailIsValid, errorMessage: emailErrorMessage } = emailState;
+  const { errorMessage: emailErrorMessage } = emailState;
   const [dispatchCountryQuery, setDispatchCountryQuery] = useState("");
   const [dispatchCityQuery, setDispatchCityQuery] = useState("");
   const [selectedDispatchCountry, setSelectedDispatchCountry] = useState({});
