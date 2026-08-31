@@ -42,9 +42,9 @@ const useCalculator = () => {
         setCountriesIsLoading(true);
         const countries = await getCountries();
         setCountriesData(countries);
-        setCountriesIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+        console.error("Failed to load countries", error);
+      } finally {
         setCountriesIsLoading(false);
       }
     };
@@ -90,38 +90,34 @@ const useCalculator = () => {
 
   const loadCities = useCallback(async (countryCode, setCities, setLoading) => {
     setLoading(true);
-    const cities = await getCities(countryCode);
-    setCities(cities);
-    setLoading(false);
+
+    try {
+      const cities = await getCities(countryCode);
+      setCities(cities);
+    } catch (error) {
+      console.error(`Failed to load cities for ${countryCode}`, error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
-    try {
-      if (selectedDispatchCountry?.countryCode) {
-        loadCities(
-          selectedDispatchCountry.countryCode,
-          setCitiesOfDispatchCountry,
-          setDispatchCitiesIsLoading,
-        );
-      }
-    } catch (error) {
-      console.log(error.message);
-      setDispatchCitiesIsLoading(false);
+    if (selectedDispatchCountry?.countryCode) {
+      loadCities(
+        selectedDispatchCountry.countryCode,
+        setCitiesOfDispatchCountry,
+        setDispatchCitiesIsLoading,
+      );
     }
   }, [selectedDispatchCountry, loadCities]);
 
   useEffect(() => {
-    try {
-      if (selectedDestinationCountry?.countryCode) {
-        loadCities(
-          selectedDestinationCountry.countryCode,
-          setCitiesOfDestinationCountry,
-          setDestinationCitiesIsLoading,
-        );
-      }
-    } catch (error) {
-      console.log(error.message);
-      setDestinationCitiesIsLoading(false);
+    if (selectedDestinationCountry?.countryCode) {
+      loadCities(
+        selectedDestinationCountry.countryCode,
+        setCitiesOfDestinationCountry,
+        setDestinationCitiesIsLoading,
+      );
     }
   }, [selectedDestinationCountry, loadCities]);
 

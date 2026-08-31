@@ -8,6 +8,8 @@ beforeEach(() => {
   vi.stubGlobal(
     "fetch",
     vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
       json: async () => ({ geonames }),
     }),
   );
@@ -36,5 +38,13 @@ describe("GeoNames API", () => {
     fetch.mockRejectedValueOnce(new Error("Network unavailable"));
 
     await expect(getCountries()).rejects.toThrow("Network unavailable");
+  });
+
+  it("rejects unsuccessful HTTP responses", async () => {
+    fetch.mockResolvedValueOnce({ ok: false, status: 503 });
+
+    await expect(getCountries()).rejects.toThrow(
+      "GeoNames request failed with status 503",
+    );
   });
 });

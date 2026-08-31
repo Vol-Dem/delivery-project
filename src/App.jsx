@@ -2,7 +2,6 @@ import "./App.css";
 import "./svg.scss";
 import Hero from "./components/sections/hero/Hero";
 import Header from "./components/layout/header/Header";
-import ErrorBoundary from "./components/error-boundary/ErrorBoundary";
 import Calculator from "./components/sections/calculator/Calculator";
 import Services from "./components/sections/services/Services";
 import About from "./components/sections/about/About";
@@ -20,21 +19,19 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <ErrorBoundary>
-          <div className="bg">
-            <Hero />
-            <Calculator />
-            <HeroBackground />
-          </div>
-          <Services />
-          <Counters />
-          <Solution />
-          <Cta />
-          <About />
-          <Steps />
-          <Advantages />
-          <Contacts />
-        </ErrorBoundary>
+        <div className="bg">
+          <Hero />
+          <Calculator />
+          <HeroBackground />
+        </div>
+        <Services />
+        <Counters />
+        <Solution />
+        <Cta />
+        <About />
+        <Steps />
+        <Advantages />
+        <Contacts />
       </main>
       <Footer />
     </div>

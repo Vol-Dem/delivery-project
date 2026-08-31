@@ -1,3 +1,21 @@
+@use "../../variables/variables.scss" as var;
+
 .error {
-  color: red;
+  padding: 4rem 2rem;
+  color: var.$color-text-primary;
+  text-align: center;
+
+  &__title {
+    color: var.$color-red;
+  }
+
+  &__button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 0;
+    border-radius: 0.6rem;
+    background-color: var.$color-primary;
+    color: var.$color-text-white;
+    cursor: pointer;
+  }
 }

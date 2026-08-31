@@ -1,5 +1,5 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getCities, getCountries } from "../../../api/geonames";
 import useCalculator from "./use-calculator";
 
@@ -18,6 +18,10 @@ beforeEach(() => {
   vi.clearAllMocks();
   getCountries.mockResolvedValue(countries);
   getCities.mockResolvedValue(cities);
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
 });
 
 describe("useCalculator", () => {
@@ -49,6 +53,23 @@ describe("useCalculator", () => {
       expect(getCities).toHaveBeenCalledWith("DE");
       expect(result.current.dispatch.city.options).toEqual(cities);
       expect(result.current.dispatch.city.isLoading).toBe(false);
+    });
+  });
+
+  it("contains city request failures and clears the loading state", async () => {
+    const requestError = new Error("Network unavailable");
+    const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
+    getCities.mockRejectedValueOnce(requestError);
+    const { result } = renderHook(() => useCalculator());
+
+    act(() => result.current.dispatch.country.select(countries[0]));
+
+    await waitFor(() => {
+      expect(result.current.dispatch.city.isLoading).toBe(false);
+      expect(consoleError).toHaveBeenCalledWith(
+        "Failed to load cities for DE",
+        requestError,
+      );
     });
   });
 
