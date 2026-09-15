@@ -42,7 +42,7 @@ const ServiceCard = ({ image, title, text, className }: ServiceCardProps) => {
       >
         <div className={classes["service__content"]}>
           <img src={image} alt={title} className={classes["service__img"]} />
-          <h4>{title}</h4>
+          <h3>{title}</h3>
           <p>{text}</p>
         </div>
       </div>

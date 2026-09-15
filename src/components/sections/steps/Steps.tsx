@@ -90,7 +90,7 @@ const Steps = () => {
             />
           </motion.div>
         </div>
-        <h4 className={classes["steps__title"]}>{step.title}</h4>
+        <h3 className={classes["steps__title"]}>{step.title}</h3>
         <p className={classes["steps__text"]}>{step.text}</p>
       </motion.div>
     );

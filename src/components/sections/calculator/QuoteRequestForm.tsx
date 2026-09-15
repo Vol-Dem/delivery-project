@@ -18,9 +18,9 @@ const QuoteRequestForm = ({
   emailError,
 }: QuoteRequestFormProps) => (
   <>
-    <h3 className={classes["calculator__form-title"]}>
+    <h2 className={classes["calculator__form-title"]}>
       Fill out the form to get a quote
-    </h3>
+    </h2>
     <form className={classes["calculator__form"]} onSubmit={onSubmit}>
       <Input
         type="email"

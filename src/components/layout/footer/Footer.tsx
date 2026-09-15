@@ -11,10 +11,10 @@ const Footer = () => {
       <div className={classes.wrap}>
         <div className={classes["footer__container"]}>
           <div className={classes["footer__column"]}>
-            <h5 className={classes["footer__logo"]}>
+            <div className={classes["footer__logo"]}>
               <BoxImg className={classes["footer__logo-img"]} />
               <span> UNSTO-EXPRESS</span>
-            </h5>
+            </div>
             <p className={classes["footer__text"]}>
               With the aim to do better everyday, and to be able to add greater
               value to our customers' lives, we have an extensive network of
@@ -24,30 +24,30 @@ const Footer = () => {
             </p>
           </div>
           <div className={classes["footer__column"]}>
-            <h4 className={classes["footer__title"]}>Quick Links</h4>
+            <h2 className={classes["footer__title"]}>Quick Links</h2>
             <FooterNavigation />
           </div>
           <div className={classes["footer__column"]}>
-            <h5 className={classes["footer__title"]}>Contact info</h5>
+            <h2 className={classes["footer__title"]}>Contact info</h2>
 
             <div className={classes["footer__item"]}>
               <MarkerIcon className={classes["footer__icon"]} />
               <div>
-                <h6 className={classes["footer__subtitle"]}>Location</h6>
+                <h3 className={classes["footer__subtitle"]}>Location</h3>
                 <span>75 Some Street, Some City</span>
               </div>
             </div>
             <div className={classes["footer__item"]}>
               <EmailIcon className={classes["footer__icon"]} />
               <div>
-                <h6 className={classes["footer__subtitle"]}>Email</h6>
+                <h3 className={classes["footer__subtitle"]}>Email</h3>
                 <span>someemail@smail.rnd</span>
               </div>
             </div>
             <div className={classes["footer__item"]}>
               <PhoneImg className={classes["footer__icon"]} />
               <div>
-                <h6 className={classes["footer__subtitle"]}>Phone</h6>
+                <h3 className={classes["footer__subtitle"]}>Phone</h3>
                 <span>+7-777-777-77</span>
               </div>
             </div>

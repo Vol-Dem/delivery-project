@@ -12,7 +12,7 @@ interface TrackingProps {
 const Tracking = ({ trackingNumber }: TrackingProps) => {
   return (
     <div className={classes["tracking"]}>
-      <h3 className={classes["tracking__title"]}>Delivery</h3>
+      <h2 className={classes["tracking__title"]}>Delivery</h2>
       <div className={classes["tracking__number-item"]}>
         <div className={classes["tracking__subtitle"]}>Track Number</div>
         <div className={classes["tracking__number"]}>{trackingNumber}</div>

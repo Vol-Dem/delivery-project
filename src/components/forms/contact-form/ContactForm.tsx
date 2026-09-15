@@ -7,7 +7,7 @@ const ContactForm = () => {
   return (
     <div>
       <form className={classes["contact-form"]}>
-        <h3 className={classes["contact-form__title"]}>Get a call back</h3>
+        <h2 className={classes["contact-form__title"]}>Get a call back</h2>
         <Input
           type="text"
           placeholder="Name"

@@ -13,7 +13,7 @@ const Titles = ({ main, sub, className }: TitlesProps) => {
       {sub && (
         <div className={classes["titles__sub"]}>
           <BoxImg className={classes["titles__sub-img"]} />
-          <h3 className={classes["titles__sub-text"]}>{sub}</h3>
+          <p className={classes["titles__sub-text"]}>{sub}</p>
         </div>
       )}
       <h2 className={classes["titles__main"]}>{main}</h2>

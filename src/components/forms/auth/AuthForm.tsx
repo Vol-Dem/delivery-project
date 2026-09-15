@@ -45,7 +45,7 @@ const AuthForm = () => {
 
   const authFormHtml = (
     <form className={classes.auth} onSubmit={authSubmitHandler}>
-      <h3 className={classes["auth__title"]}>Login</h3>
+      <h2 className={classes["auth__title"]}>Login</h2>
       <Input
         type="email"
         placeholder="Email"

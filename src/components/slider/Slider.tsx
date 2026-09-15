@@ -56,7 +56,7 @@ const Slider = ({ sliderData, className }: SliderProps) => {
               <div className={classes["slides__img"]}>
                 <slide.img />
               </div>
-              <h4 className={classes["slides__title"]}>{slide.title}</h4>
+              <h3 className={classes["slides__title"]}>{slide.title}</h3>
               <p className={classes["slides__description"]}>
                 {slide.description}
               </p>

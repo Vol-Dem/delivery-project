@@ -43,20 +43,20 @@ const AdvantagesCard = ({
         className={`${classes["advantages-card__side"]} ${classes["advantages-card__side--front"]}`}
       >
         {image}
-        <h4
+        <h3
           className={`${classes["advantages-card__title"]} ${classes["advantages-card__title--front"]}`}
         >
           {title}
-        </h4>
+        </h3>
       </div>
       <div
         className={`${classes["advantages-card__side"]} ${classes["advantages-card__side--back"]}`}
       >
-        <h4
+        <h3
           className={`${classes["advantages-card__title"]} ${classes["advantages-card__title--back"]}`}
         >
           {title}
-        </h4>
+        </h3>
         <p className={classes["advantages-card__text"]}>{text}</p>
       </div>
     </div>
