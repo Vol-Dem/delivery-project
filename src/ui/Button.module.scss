@@ -12,7 +12,10 @@
   box-shadow: 0 0 1rem rgba(var.$color-black, 0.2);
   white-space: nowrap;
   cursor: pointer;
-  transition: all 0.2s;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
   &:hover {
     box-shadow: 0 0 1.3rem 0.1rem var.$color-secondary;
     transform: translateY(-1px);

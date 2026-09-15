@@ -21,7 +21,7 @@
   display: inline-block;
   color: var.$color-text-white;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: text-shadow 0.2s;
 
   &:hover {
     text-shadow: 0 0 1rem var.$color-white;

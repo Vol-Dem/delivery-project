@@ -16,7 +16,9 @@
     color: inherit;
     font: inherit;
     cursor: pointer;
-    transition: all 0.3s;
+    transition:
+      color 0.3s,
+      border-color 0.3s;
 
     &:hover {
       color: var.$color-tag-hover;

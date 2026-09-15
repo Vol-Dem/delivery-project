@@ -33,7 +33,9 @@
   left: 0;
   background: var.$gradient-main-top-dark;
   z-index: 999;
-  transition: all 0.3s;
+  transition:
+    opacity 0.3s,
+    height 0.3s;
 
   & ul {
     position: absolute;
@@ -75,7 +77,10 @@
       width: 2.5rem;
       height: 0.2rem;
       background-color: var.$color-white;
-      transition: all 0.3s;
+      transition:
+        background-color 0.3s,
+        top 0.3s,
+        transform 0.3s;
     }
 
     &::before,
@@ -111,7 +116,7 @@
   display: inline-block;
   color: var.$color-text-white;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: transform 0.2s;
 
   &::before {
     content: "";
@@ -120,7 +125,7 @@
     width: 0;
     background-color: var.$color-secondary;
     bottom: 0;
-    transition: all 0.3s;
+    transition: width 0.3s;
   }
 
   &:hover {

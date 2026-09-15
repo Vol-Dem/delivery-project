@@ -58,7 +58,7 @@
       background: var.$gradient-about-accent;
       background-size: 250%;
 
-      transition: all 0.4s;
+      transition: background-position 0.4s;
 
       &:hover {
         background-position: 100%;
@@ -76,8 +76,6 @@
       border-radius: 0.8rem;
       color: var.$color-text-white;
       box-shadow: 0 0 1rem rgba(var.$color-black, 0.1);
-      transition: all 0.3s;
-
       &--1 {
         background-color: var.$color-violet;
       }
