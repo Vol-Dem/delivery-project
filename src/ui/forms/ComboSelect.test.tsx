@@ -24,9 +24,36 @@ describe("ComboSelect", () => {
 
     await user.click(screen.getByRole("combobox"));
 
-    expect(screen.getByRole("listbox")).toBeTruthy();
+    const listbox = screen.getByRole("listbox");
+
+    expect(listbox).toBeTruthy();
+    expect(listbox.closest("[data-headlessui-portal]")).not.toBeNull();
     expect(document.documentElement.style.overflow).toBe("");
     expect(document.documentElement.style.paddingRight).toBe("");
+  });
+
+  it("gives the options button an accessible name", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <ComboSelect
+        optionsData={options}
+        setQuery={vi.fn()}
+        setSelected={vi.fn()}
+        selected={null}
+        placeholder="Select country"
+      />,
+    );
+
+    const button = screen.getByRole("button", {
+      name: "Open Select country options",
+    });
+
+    await user.click(button);
+
+    expect(
+      screen.getByRole("button", { name: "Close Select country options" }),
+    ).toBe(button);
   });
 
   it.each([

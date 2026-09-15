@@ -57,6 +57,7 @@
 .options {
   width: var(--input-width);
   max-height: 25rem;
+  z-index: 500;
   overflow-y: auto;
   overscroll-behavior: contain;
   background-color: var.$color-white;

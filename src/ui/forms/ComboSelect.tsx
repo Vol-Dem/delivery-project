@@ -129,7 +129,10 @@ const ComboSelect = <T extends ComboSelectOption,>({
                 displayValue={(option: T | null) => getOptionLabel(option)}
                 onChange={queryChangeHandler}
               />
-              <ComboboxButton className={classes.button}>
+              <ComboboxButton
+                aria-label={`${open ? "Close" : "Open"} ${placeholder} options`}
+                className={classes.button}
+              >
                 {!!optionsData?.length && (
                   <motion.div animate={{ rotate: open ? 180 : 0 }}>
                     <ChevronDownIcon className={classes.arrow} />
