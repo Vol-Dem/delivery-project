@@ -15,8 +15,10 @@ interface ModalProps {
   onClose: () => void;
 }
 
-// Dialog has no modal={false} option, so keep its focus management while
-// restoring the document styles changed by Headless UI's scroll lock.
+/**
+ * Preserves Headless UI's dialog focus management while reverting the document
+ * styles its mandatory scroll lock applies.
+ */
 const DocumentScrollUnlock = () => {
   const documentStyles = useRef<DocumentStyles | undefined>(undefined);
 

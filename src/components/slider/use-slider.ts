@@ -29,6 +29,7 @@ const initialMeasurements: SliderMeasurements = {
   translateMax: 0,
 };
 
+/** Derives slider boundaries and snap points from rendered element sizes. */
 export const createSliderMeasurements = ({
   containerWidth,
   gap,
@@ -45,6 +46,7 @@ export const createSliderMeasurements = ({
   translateMax: containerWidth - sliderWidth,
 });
 
+/** Moves forward by one item without crossing the final slider boundary. */
 export const getNextTranslate = (
   translate: number,
   itemWidth: number,
@@ -52,9 +54,11 @@ export const getNextTranslate = (
 ) =>
   Math.max(translate - itemWidth, translateMax);
 
+/** Moves backward by one item without crossing the starting boundary. */
 export const getPreviousTranslate = (translate: number, itemWidth: number) =>
   Math.min(translate + itemWidth, 0);
 
+/** Snaps a drag position to its nearest valid interval and clamps its end. */
 export const getSnappedTranslate = (
   translate: number,
   intervals: number[],
@@ -73,6 +77,7 @@ export const getSnappedTranslate = (
   return Math.max(nearestInterval, translateMax);
 };
 
+/** Returns the slide indexes whose snap points fall inside the viewport. */
 export const getVisibleSlideIndexes = (
   intervals: number[],
   translate: number,
@@ -97,6 +102,7 @@ const getPointerX = (event: DragEvent, marginLeft: number) => {
   return Math.round(clientX - marginLeft);
 };
 
+/** Coordinates responsive slider measurements, navigation, and drag gestures. */
 const useSlider = () => {
   const [translate, setTranslate] = useState(0);
   const [isDragging, setIsDragging] = useState(false);

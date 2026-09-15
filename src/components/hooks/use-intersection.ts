@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import type { RefObject } from "react";
 
+/**
+ * Reports the first time an element intersects the viewport, then disconnects
+ * the observer so entrance animations do not replay.
+ *
+ * @param rootMargin - Root margin percentage without the `%` suffix.
+ */
 export const useIntersection = <T extends Element>(
   ref: RefObject<T | null>,
   rootMargin = "-40",

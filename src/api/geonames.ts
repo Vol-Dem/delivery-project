@@ -47,8 +47,19 @@ const requestGeonames = async <T>(
   return data.geonames as T[];
 };
 
+/**
+ * Loads the countries available from GeoNames.
+ *
+ * @throws When the request fails or GeoNames returns an unexpected payload.
+ */
 export const getCountries = () => requestGeonames<Country>(countryInfoUrl);
 
+/**
+ * Loads up to 1,000 populated places for a country.
+ *
+ * @param countryCode - ISO country code accepted by GeoNames.
+ * @throws When the request fails or GeoNames returns an unexpected payload.
+ */
 export const getCities = (countryCode: string) =>
   requestGeonames<City>(searchUrl, {
     country: countryCode,

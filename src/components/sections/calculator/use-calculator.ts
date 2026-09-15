@@ -17,6 +17,10 @@ const popularCountries = [
   { countryName: "France", countryCode: "FR", isoNumeric: "250" },
 ];
 
+/**
+ * Owns GeoNames loading, route selection, and quote-dialog state for the
+ * delivery calculator.
+ */
 const useCalculator = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [requestIsSended, setRequestIsSended] = useState(false);

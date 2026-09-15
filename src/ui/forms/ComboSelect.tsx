@@ -22,6 +22,7 @@ interface ComboSelectOption {
 const optionsBatchSize = 40;
 const scrollEndThreshold = 8;
 
+/** Compares GeoNames options by stable city or country identifiers. */
 const optionsMatch = <T extends ComboSelectOption>(
   option: T | null,
   selectedOption: T | null,

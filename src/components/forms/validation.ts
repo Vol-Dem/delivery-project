@@ -29,5 +29,9 @@ const defaultValidation = {
   errorMessage: "",
 };
 
+/**
+ * Applies a named validation rule to a form value.
+ * Unsupported rule names return an invalid result without an error message.
+ */
 export const validateInput = (type: string, value: string): ValidationResult =>
   validationRules[type]?.(value) ?? defaultValidation;
